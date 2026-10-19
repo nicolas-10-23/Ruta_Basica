@@ -1,0 +1,23 @@
+BITÁCORA - PROYECTO RUEDA LIBRE
+
+1. PETICIÓN DEL DOCUMENTO
+- URL completa: http://127.0.0.1:5500/index.html
+- Protocolo: http
+- Host: 127.0.0.1
+- Puerto: 5500
+- Ruta: /index.html
+- Método: GET
+- Código de estado: 200 OK (el servidor encontró el archivo y lo entregó)
+
+2. RUTA INEXISTENTE
+- URL probada: http://127.0.0.1:5500/promociones.html
+- Código de estado: 404 Not Found
+- Significado: el servidor respondió, pero no existe ese recurso en esa ruta.
+
+3. ROLES DE LAS TECNOLOGÍAS
+- HTML (estructura y contenido): define qué hay en la página.
+  Ejemplo: el <h1> con el nombre del negocio y una lista de bicicletas disponibles.
+- CSS (presentación): define cómo se ve.
+  Ejemplo: fondo claro, botón de "Reservar" en naranja y las tarjetas de bicicletas en cuadrícula.
+- JavaScript (comportamiento): define cómo reacciona.
+  Ejemplo: calcular el precio total del alquiler cuando el usuario cambia las horas o los días.
