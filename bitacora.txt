@@ -21,3 +21,17 @@ BITÁCORA - PROYECTO RUEDA LIBRE
   Ejemplo: fondo claro, botón de "Reservar" en naranja y las tarjetas de bicicletas en cuadrícula.
 - JavaScript (comportamiento): define cómo reacciona.
   Ejemplo: calcular el precio total del alquiler cuando el usuario cambia las horas o los días.
+
+4. TABLA DE RUTAS RELATIVAS (v0.1)
+
+  Origen                  | Destino  | Ruta escrita
+  ------------------------|----------|-----------------------
+  index.html              | Inicio   | index.html
+  index.html              | Tarifas  | paginas/tarifas.html
+  index.html              | Reservas | paginas/reservas.html
+  paginas/tarifas.html    | Inicio   | ../index.html
+  paginas/tarifas.html    | Tarifas  | tarifas.html
+  paginas/tarifas.html    | Reservas | reservas.html
+  paginas/reservas.html   | Inicio   | ../index.html
+  paginas/reservas.html   | Tarifas  | tarifas.html
+  paginas/reservas.html   | Reservas | reservas.html
