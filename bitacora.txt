@@ -35,3 +35,53 @@ BITÁCORA - PROYECTO RUEDA LIBRE
   paginas/reservas.html   | Inicio   | ../index.html
   paginas/reservas.html   | Tarifas  | tarifas.html
   paginas/reservas.html   | Reservas | reservas.html
+
+5. ESQUEMA SEMÁNTICO (v0.2)
+
+Regla:
+- section = bloque temático que tiene su propio encabezado.
+- article = contenido que tiene sentido por sí solo (cada servicio).
+- aside = contenido complementario al contenido principal.
+
+index.html
+- header
+  - Rueda Libre (h1)
+  - nav (Inicio, Tarifas y rutas, Reservas)
+- main
+  - img portada.png
+  - section: ¿Quiénes somos? (h2)
+  - section: Nuestros servicios (h2)
+    - article: Alquiler de bicicletas (h3)
+    - article: Recorridos guiados (h3)
+    - article: Taller básico (h3)
+  - section: ¿Por qué alquilar con nosotros? (h2)
+  - section: ¿Cómo alquilar? (h2)
+  - section: Encuéntranos (h2)
+- footer (nombre, correo, año)
+
+paginas/tarifas.html
+- header
+  - logo y título (h1)
+  - nav
+- main
+  - section: Tarifas de alquiler (h2) -> tabla de alquiler
+  - section: Recorridos guiados (h2) -> tabla de recorridos
+  - section: Información importante (h2)
+    - aside: Qué llevar (h3) -> lista
+- footer
+
+paginas/reservas.html
+- header
+  - nav
+- main
+  - h1: Reserva tu bicicleta + párrafo con el correo
+  - section: 
+    - aside:
+      -Horario de atención (h2)
+      -Lista de definiciones (dl)
+- footer
+
+JUSTIFICACIÓN DE div Y span
+No se usó ningún div ni span: cada bloque tiene una etiqueta
+semántica equivalente (header, nav, main, section, article,
+aside, footer).
