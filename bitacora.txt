@@ -85,3 +85,81 @@ JUSTIFICACIÓN DE div Y span
 No se usó ningún div ni span: cada bloque tiene una etiqueta
 semántica equivalente (header, nav, main, section, article,
 aside, footer).
+
+6. JUSTIFICACIÓN DE CONTROLES (formulario de reservas)
+
+- Tipo de bicicleta: radio. Son solo 3 opciones y se elige una; con el
+  mismo name ("tipo-bicicleta") el navegador impide marcar dos.
+- Número de documento: text y no number. Es un identificador, no se suma
+  ni se resta, y number podría borrar ceros iniciales.
+- Fecha del alquiler: date. Muestra un calendario y evita fechas
+  escritas con formatos equivocados.
+
+Otros controles elegidos:
+- Plan y recorrido guiado: select, porque son listas fijas de opciones.
+- Comentarios: textarea, porque admite texto largo de varias líneas.
+- Políticas: checkbox, porque es una respuesta de sí o no.
+
+Nota estructural: en reservas.html el h1 va dentro de main y el
+formulario es una section dentro de main.
+
+Limitación: la validación del navegador se puede saltar editando el
+HTML en DevTools; cuando haya servidor, deberá validar de nuevo.
+
+
+7. PRUEBAS DE VALIDACIÓN (MiniReto 8)
+
+Reglas aplicadas:
+- Nombre: required, minlength 3.
+- Documento: required, pattern [0-9]{6,10}, con title.
+- Correo: required, type email.
+- Celular: required, pattern 3[0-9]{9}, con title.
+- Fecha: required, min 2026-11-01, max 2026-12-31.
+- Tipo de bicicleta y plan: required.
+- Cantidad: required, min 1, max 6.
+- Comentarios: opcional, maxlength 300.
+- Políticas: required.
+
+7. PRUEBAS DE VALIDACIÓN (MiniReto 8)
+
+Reglas aplicadas:
+- Nombre: required, minlength 3.
+- Documento: required, pattern [0-9]{6,10}, con title.
+- Correo: required, type email.
+- Celular: required, pattern 3[0-9]{9}, con title.
+- Fecha: required, min 2026-11-01, max 2026-12-31.
+- Tipo de bicicleta y plan: required.
+- Cantidad: required, min 1, max 6.
+- Comentarios: opcional, maxlength 300.
+- Políticas: required.
+
+Campo      | Dato de prueba | Resultado esperado     | Resultado obtenido
+-----------|----------------|------------------------|---------------------------------------------
+Nombre     | "Al"           | Rechaza (mínimo 3)     | Rechazó: el navegador pidió alargar el texto
+Nombre     | "Ana"          | Acepta                 | Aceptó: sin avisos en el campo
+Documento  | "12345abc"     | Rechaza (letras)       | Rechazó: mostró el mensaje del title
+Documento  | "12345"        | Rechaza (menos de 6)   | Rechazó: mostró el mensaje del title
+Documento  | "1234567890"   | Acepta                 | Aceptó: sin avisos en el campo
+Correo     | "juan@"        | Rechaza (formato)      | Rechazó: pidió un correo con formato válido
+Celular    | "3001234567"   | Acepta                 | Aceptó: sin avisos en el campo
+Celular    | "1234567890"   | Rechaza (no empieza 3) | Rechazó: mostró el mensaje del title
+Celular    | "300123"       | Rechaza (muy corto)    | Rechazó: mostró el mensaje del title
+Fecha      | 31/10/2026     | Rechaza (fuera rango)  | Rechazó: pidió una fecha dentro del rango
+Fecha      | 01/01/2027     | Rechaza (fuera rango)  | Rechazó: pidió una fecha dentro del rango
+Cantidad   | 0              | Rechaza (min 1)        | Rechazó: pidió un valor mayor o igual a 1
+Cantidad   | 7              | Rechaza (max 6)        | Rechazó: pidió un valor menor o igual a 6
+Políticas  | sin marcar     | Rechaza (obligatorio)  | Rechazó: pidió marcar la casilla
+
+Observaciones:
+- En el calendario, los días fuera del rango (antes del 1 de noviembre
+  y después del 31 de diciembre de 2026) aparecen deshabilitados.
+- Si la fecha se escribe a mano, la validación salta al enviar.
+- maxlength="10" impide escribir más de 10 dígitos en documento y celular.
+
+Recorrido con teclado:
+Recorrí el formulario completo solo con teclado (Tab y Shift + Tab para
+moverme, flechas en los radios y selects, barra espaciadora en la casilla
+y Enter para enviar). El orden fue: nombre, documento, correo, celular,
+fecha, tipo de bicicleta, plan, cantidad, recorrido, comentarios,
+políticas y botón de envío. No hubo saltos ilógicos ni fue necesario
+corregir el orden. Todo funcionó como se esperaba.
