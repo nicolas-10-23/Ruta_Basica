@@ -163,3 +163,49 @@ y Enter para enviar). El orden fue: nombre, documento, correo, celular,
 fecha, tipo de bicicleta, plan, cantidad, recorrido, comentarios,
 políticas y botón de envío. No hubo saltos ilógicos ni fue necesario
 corregir el orden. Todo funcionó como se esperaba.
+
+8. AUDITORÍA DE ACCESIBILIDAD (MiniReto 9)
+
+Hallazgo                                         | Corrección
+-------------------------------------------------|---------------------------------------------
+Los alt podían no coincidir con la imagen real   | Revisé cada imagen y ajusté el alt a lo que muestra
+Enlace del mapa abría otra pestaña sin avisar    | Agregué "(se abre en otra pestaña)" al texto
+El menú no indicaba la página actual             | Agregué aria-current="page" en cada página
+"Reservar ahora" era vago fuera de contexto      | Lo cambié a "Reservar mi bicicleta"
+URL del mapa con & sin escapar                   | Reemplacé & por &amp;
+Idioma, encabezados, tablas y labels             | Verificados: sin cambios (lang="es", un h1 por página, sin saltos)
+
+Recorrido con teclado: revisé las tres páginas con Tab, Shift + Tab y Enter;
+todos los enlaces del menú y del contenido son alcanzables en orden lógico.
+
+
+9. CONTRASTE Y MAPA DE USO DE COLOR
+
+Combinación                        | Ratio    | Clasificación
+-----------------------------------|----------|----------------------------
+Blanco sobre Verde Ruta            | 5.31:1   | Apta texto normal
+Blanco sobre Naranja Pedal         | 2.22:1   | No apta
+Azul Noche sobre Naranja Pedal     | 7.20:1   | Apta texto normal
+Azul Noche sobre Crema             | 14.83:1  | Apta texto normal
+Gris Asfalto sobre Crema           | 5.57:1   | Apta texto normal
+Verde Ruta sobre Crema             | 4.93:1   | Apta texto normal
+Naranja Pedal sobre Crema          | 2.06:1   | No apta
+Blanco sobre Azul Noche            | 15.97:1  | Apta texto normal
+
+Mapa de uso:
+- Fondo general: Crema.
+- Texto principal y títulos: Azul Noche.
+- Texto secundario: Gris Asfalto.
+- Encabezado: fondo Azul Noche con texto blanco.
+- Botón principal: fondo Verde Ruta con texto blanco.
+- Botón secundario: fondo Naranja Pedal con texto Azul Noche (nunca blanco).
+- Enlaces: Verde Ruta subrayado.
+- Naranja sobre Crema: solo decoración, nunca para texto.
+Valores verificados con WebAIM Contrast Checker.
+
+
+10. PUBLICACIÓN
+
+URL del sitio v0.2: https://nicolas-10-23.github.io/rueda-libre/
+Publicado desde la rama main (carpeta raíz) en GitHub Pages.
+Revisé las tres páginas, las imágenes y los enlaces en línea: 
