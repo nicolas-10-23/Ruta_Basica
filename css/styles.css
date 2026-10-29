@@ -1,0 +1,46 @@
+/* ========== Variables globales ========== */
+:root {
+    /* Colores de marca */
+    --color-verde-ruta: #1E7A4F;
+    --color-naranja-pedal: #F39A2B;
+    --color-azul-noche: #14213D;
+    --color-crema: #FAF6EF;
+    --color-gris-asfalto: #5B6470;
+
+    /* Tipografías con respaldo */
+    --fuente-titulos: "Montserrat", Arial, sans-serif;
+    --fuente-texto: "Open Sans", Arial, sans-serif;
+
+    /* Escala de espaciado */
+    --espacio-1: 0.5rem;
+    --espacio-2: 1rem;
+    --espacio-3: 1.5rem;
+    --espacio-4: 2rem;
+}
+
+/* ========== Cuerpo: base que se hereda ========== */
+body {
+    font-family: var(--fuente-texto);
+    color: var(--color-azul-noche);
+    background-color: var(--color-crema);
+}
+
+/* ========== Títulos: un solo selector agrupado ========== */
+h1, h2, h3 {
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+}
+
+/* ========== Enlaces y detalles aprobados ========== */
+a {
+    color: var(--color-verde-ruta);
+    text-decoration: underline;
+}
+
+strong {
+    font-weight: 600;
+}
+
+footer {
+    color: var(--color-gris-asfalto);
+}

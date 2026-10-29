@@ -209,3 +209,21 @@ Valores verificados con WebAIM Contrast Checker.
 URL del sitio v0.2: https://nicolas-10-23.github.io/rueda-libre/
 Publicado desde la rama main (carpeta raíz) en GitHub Pages.
 Revisé las tres páginas, las imágenes y los enlaces en línea: 
+
+11. CSS BASE Y HERENCIA (MiniReto 10)
+
+Archivos: css/styles.css, enlazado en las tres páginas
+(css/styles.css desde index.html; ../css/styles.css desde paginas/).
+Fuentes: Montserrat 700 (títulos) y Open Sans 400 y 600 (textos),
+cargadas desde Google Fonts antes de styles.css.
+
+Variables declaradas en :root: 5 colores de marca, 2 familias
+tipográficas con respaldo y 4 tamaños de espaciado en rem.
+
+Verificación: sin style="" ni <style> en ningún HTML.
+
+Comprobación de herencia (DevTools, Computed, párrafo de index.html):
+- Se hereda: font-family. El párrafo muestra Open Sans sin tener la
+  regla propia; la recibe del body.
+- No se hereda: background-color. El párrafo tiene fondo transparente;
+  el crema es del body, no del párrafo.
