@@ -107,7 +107,7 @@ formulario es una section dentro de main.
 Limitación: la validación del navegador se puede saltar editando el
 HTML en DevTools; cuando haya servidor, deberá validar de nuevo.
 
-7. PRUEBAS DE VALIDACIÓN (MiniReto 8)
+7. PRUEBAS DE VALIDACIÓN
 
 Reglas aplicadas:
 - Nombre: required, minlength 3.
@@ -151,7 +151,7 @@ fecha, tipo de bicicleta, plan, cantidad, recorrido, comentarios,
 políticas y botón de envío. No hubo saltos ilógicos ni fue necesario
 corregir el orden. Todo funcionó como se esperaba.
 
-8. AUDITORÍA DE ACCESIBILIDAD (MiniReto 9)
+8. AUDITORÍA DE ACCESIBILIDAD
 
 Hallazgo                                         | Corrección
 -------------------------------------------------|---------------------------------------------
@@ -184,7 +184,7 @@ Mapa de uso:
 - Fondo general: Crema.
 - Texto principal y títulos: Azul Noche.
 - Texto secundario: Gris Asfalto.
-- Encabezado: fondo Azul Noche con texto blanco.
+- Encabezado: fondo Crema con menú en Gris Asfalto.
 - Botón principal: fondo Verde Ruta con texto blanco.
 - Botón secundario: fondo Naranja Pedal con texto Azul Noche (nunca blanco).
 - Enlaces: Verde Ruta subrayado.
@@ -202,7 +202,7 @@ corrigió ajustando las rutas relativas (tarifas.html y reservas.html sin
 "paginas/" porque ya están en esa carpeta).
 La URL también está en la descripción del repositorio.
 
-11. CSS BASE Y HERENCIA (MiniReto 10)
+11. CSS BASE Y HERENCIA
 
 Archivos: css/styles.css, enlazado en las tres páginas
 (css/styles.css desde index.html; ../css/styles.css desde paginas/).
@@ -221,7 +221,7 @@ Comprobación de herencia (DevTools, Computed, párrafo de index.html):
 - No se hereda: background-color. El párrafo tiene fondo transparente;
   el crema es del body, no del párrafo.
 
-12. ESPECIFICIDAD Y ESTADOS (MiniReto 11)
+12. ESPECIFICIDAD Y ESTADOS
 
 Conflicto: el enlace con clase "activo" salía gris en vez de verde.
 
@@ -246,7 +246,7 @@ Recorrido con Tab en las tres páginas: en todas se ve el foco en enlaces
 del menú, botones y campos (contorno azul noche o fondo azul noche), y
 con :hov en DevTools comprobé los estados :hover y :focus.
 
-13. BOX MODEL (MiniReto 12)
+13. BOX MODEL
 
 Medición del ancho de una tarjeta (article de "Alquiler de bicicletas"),
 DevTools > Computed, con la ventana ancha (main en su máximo de 60rem):
@@ -263,3 +263,52 @@ ejemplo 100%), donde content-box haría que la caja se desborde.
 Unidades: rem para espaciados y anchos máximos, % para imágenes,
 vh para la altura mínima de la portada y px solo para bordes de 1 px.
 Menú en fila con display: flex.
+
+14. POSICIONAMIENTO Y REVISIÓN FINAL
+
+- Etiqueta "Nuevo": position absolute con top/right dentro de la tarjeta
+  "Bicicletas eléctricas", que tiene position relative. Al salir del flujo
+  normal no desplaza el contenido. Texto Azul Noche sobre Naranja Pedal
+  (7.20:1).
+- Enlace de WhatsApp: position fixed con right y bottom, en las tres
+  páginas, con texto visible "WhatsApp" y aria-label que avisa que abre
+  otra pestaña. Reutiliza la clase boton-cta (Verde Ruta con texto blanco,
+  5.31:1) y es alcanzable con Tab.
+- Espacio final: padding-bottom en body para que el botón fijo no tape
+  el pie de página.
+- Justificación del único span: la etiqueta "Nuevo" no tiene una etiqueta
+  semántica equivalente; es solo una marca visual.
+- Consistencia: logo en el header de las tres páginas y un solo styles.css.
+  Diferencia conocida: en reservas.html el h1 está en main.
+- Limpieza de styles.css: organizado en 7 secciones comentadas; las reglas
+  de foco repetidas se agruparon en una sola.
+- Revisión: sin declaraciones tachadas inesperadas, sin 404 y recorrido
+  con teclado en las tres páginas.
+
+
+15. CIERRE DE LA SEMANA
+
+Qué construí en cada MiniReto:
+1. Kilómetro 0: repositorio, carpetas, index.html base y bitácora.
+2. La vitrina: página de inicio con encabezados, listas, imágenes y enlaces.
+3. Tarifas claras: tablas accesibles y rutas relativas entre carpetas.
+4. v0.1: reservas inicial, menú y pie comunes.
+5. Estructura con significado: header, nav, main, section, article, aside y footer.
+6. El formulario: fieldsets, controles y labels.
+7. Reservas sin errores: validación nativa, pruebas y uso con teclado.
+8. v0.2 en línea: auditoría de accesibilidad, contraste y GitHub Pages.
+9. La identidad: hoja externa, variables, tipografías y colores.
+10. Navegación con estados: clase activa, especificidad, :hover y :focus.
+11. Todo en su lugar: box model, tarjetas, tablas y formulario.
+12. v1.0: posicionamiento, revisión final y lanzamiento.
+
+Lo que mejoraría:
+- Conectar el formulario a un servidor y validar también allá.
+- Hacer el diseño responsivo con media queries (el sitio todavía no se
+  adapta a celulares).
+- Calcular la fecha mínima del formulario con JavaScript.
+- Optimizar el peso de las imágenes y agregar favicon.
+- Unificar la ubicación del h1 en las tres páginas.
+- Aplicar el encabezado oscuro del mapa de color con un menú de otro tono.
+
+URL del sitio v1.0: https://nicolas-10-23.github.io/rueda-libre/
