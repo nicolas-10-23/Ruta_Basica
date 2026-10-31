@@ -18,23 +18,23 @@ BITÁCORA - PROYECTO RUEDA LIBRE
 - HTML (estructura y contenido): define qué hay en la página.
   Ejemplo: el <h1> con el nombre del negocio y una lista de bicicletas disponibles.
 - CSS (presentación): define cómo se ve.
-  Ejemplo: fondo claro, botón de "Reservar" en naranja y las tarjetas de bicicletas en cuadrícula.
+  Ejemplo: fondo claro, botón de "Reservar" en verde y las tarjetas de servicios con borde y espaciado.
 - JavaScript (comportamiento): define cómo reacciona.
   Ejemplo: calcular el precio total del alquiler cuando el usuario cambia las horas o los días.
 
 4. TABLA DE RUTAS RELATIVAS (v0.1)
 
-  Origen                  | Destino  | Ruta escrita
-  ------------------------|----------|-----------------------
-  index.html              | Inicio   | index.html
-  index.html              | Tarifas  | paginas/tarifas.html
-  index.html              | Reservas | paginas/reservas.html
-  paginas/tarifas.html    | Inicio   | ../index.html
-  paginas/tarifas.html    | Tarifas  | tarifas.html
-  paginas/tarifas.html    | Reservas | reservas.html
-  paginas/reservas.html   | Inicio   | ../index.html
-  paginas/reservas.html   | Tarifas  | tarifas.html
-  paginas/reservas.html   | Reservas | reservas.html
+Origen                  | Destino  | Ruta escrita
+------------------------|----------|-----------------------
+index.html              | Inicio   | index.html
+index.html              | Tarifas  | paginas/tarifas.html
+index.html              | Reservas | paginas/reservas.html
+paginas/tarifas.html    | Inicio   | ../index.html
+paginas/tarifas.html    | Tarifas  | tarifas.html
+paginas/tarifas.html    | Reservas | reservas.html
+paginas/reservas.html   | Inicio   | ../index.html
+paginas/reservas.html   | Tarifas  | tarifas.html
+paginas/reservas.html   | Reservas | reservas.html
 
 5. ESQUEMA SEMÁNTICO (v0.2)
 
@@ -45,10 +45,10 @@ Regla:
 
 index.html
 - header
-  - Rueda Libre (h1)
   - nav (Inicio, Tarifas y rutas, Reservas)
+  - Rueda Libre (h1)
 - main
-  - img portada.png
+  - img portada
   - section: ¿Quiénes somos? (h2)
   - section: Nuestros servicios (h2)
     - article: Alquiler de bicicletas (h3)
@@ -61,8 +61,9 @@ index.html
 
 paginas/tarifas.html
 - header
-  - logo y título (h1)
+  - logo
   - nav
+  - título (h1)
 - main
   - section: Tarifas de alquiler (h2) -> tabla de alquiler
   - section: Recorridos guiados (h2) -> tabla de recorridos
@@ -75,10 +76,10 @@ paginas/reservas.html
   - nav
 - main
   - h1: Reserva tu bicicleta + párrafo con el correo
-  - section: 
-    - aside:
-      -Horario de atención (h2)
-      -Lista de definiciones (dl)
+  - section: Horario de atención (h2)
+    - aside -> lista de definiciones (dl)
+  - section: Formulario de reserva (h2)
+    - form con tres fieldset: Tus datos, Tu alquiler y Confirmación
 - footer
 
 JUSTIFICACIÓN DE div Y span
@@ -105,20 +106,6 @@ formulario es una section dentro de main.
 
 Limitación: la validación del navegador se puede saltar editando el
 HTML en DevTools; cuando haya servidor, deberá validar de nuevo.
-
-
-7. PRUEBAS DE VALIDACIÓN (MiniReto 8)
-
-Reglas aplicadas:
-- Nombre: required, minlength 3.
-- Documento: required, pattern [0-9]{6,10}, con title.
-- Correo: required, type email.
-- Celular: required, pattern 3[0-9]{9}, con title.
-- Fecha: required, min 2026-11-01, max 2026-12-31.
-- Tipo de bicicleta y plan: required.
-- Cantidad: required, min 1, max 6.
-- Comentarios: opcional, maxlength 300.
-- Políticas: required.
 
 7. PRUEBAS DE VALIDACIÓN (MiniReto 8)
 
@@ -173,11 +160,12 @@ Enlace del mapa abría otra pestaña sin avisar    | Agregué "(se abre en otra 
 El menú no indicaba la página actual             | Agregué aria-current="page" en cada página
 "Reservar ahora" era vago fuera de contexto      | Lo cambié a "Reservar mi bicicleta"
 URL del mapa con & sin escapar                   | Reemplacé & por &amp;
+Alt de la portada con un espacio doble           | Dejé un solo espacio
+Falta de </p> en el campo de correo (reservas)   | Cerré la etiqueta para que la estructura sea correcta
 Idioma, encabezados, tablas y labels             | Verificados: sin cambios (lang="es", un h1 por página, sin saltos)
 
 Recorrido con teclado: revisé las tres páginas con Tab, Shift + Tab y Enter;
 todos los enlaces del menú y del contenido son alcanzables en orden lógico.
-
 
 9. CONTRASTE Y MAPA DE USO DE COLOR
 
@@ -203,12 +191,16 @@ Mapa de uso:
 - Naranja sobre Crema: solo decoración, nunca para texto.
 Valores verificados con WebAIM Contrast Checker.
 
-
 10. PUBLICACIÓN
 
 URL del sitio v0.2: https://nicolas-10-23.github.io/rueda-libre/
 Publicado desde la rama main (carpeta raíz) en GitHub Pages.
-Revisé las tres páginas, las imágenes y los enlaces en línea: 
+Revisé las tres páginas, las imágenes y los enlaces en línea: las tres
+páginas cargan, las imágenes se ven y los enlaces del menú y del contenido
+funcionan sin errores 404. Un fallo inicial en el menú de paginas/ se
+corrigió ajustando las rutas relativas (tarifas.html y reservas.html sin
+"paginas/" porque ya están en esa carpeta).
+La URL también está en la descripción del repositorio.
 
 11. CSS BASE Y HERENCIA (MiniReto 10)
 
@@ -217,8 +209,9 @@ Archivos: css/styles.css, enlazado en las tres páginas
 Fuentes: Montserrat 700 (títulos) y Open Sans 400 y 600 (textos),
 cargadas desde Google Fonts antes de styles.css.
 
-Variables declaradas en :root: 5 colores de marca, 2 familias
-tipográficas con respaldo y 4 tamaños de espaciado en rem.
+Variables declaradas en :root: 6 colores (5 de marca + blanco),
+2 familias tipográficas con respaldo, 4 tamaños de espaciado en rem y,
+desde el MiniReto 12, 2 anchos (--ancho-contenido y --ancho-lectura).
 
 Verificación: sin style="" ni <style> en ningún HTML.
 
@@ -227,3 +220,46 @@ Comprobación de herencia (DevTools, Computed, párrafo de index.html):
   regla propia; la recibe del body.
 - No se hereda: background-color. El párrafo tiene fondo transparente;
   el crema es del body, no del párrafo.
+
+12. ESPECIFICIDAD Y ESTADOS (MiniReto 11)
+
+Conflicto: el enlace con clase "activo" salía gris en vez de verde.
+
+Especificidad (ids, clases, elementos):
+- #menu a  = (1, 0, 1)
+- .activo  = (0, 1, 0)
+Se compara de izquierda a derecha: 1 id > 0 ids, así que #menu a gana y
+el color de .activo aparece tachado en DevTools. El font-weight sí se
+aplicó porque #menu a no lo define.
+
+Solución: cambié la regla a "#menu a.activo" = (1, 1, 1), que supera a
+(1, 0, 1). Sin !important ni estilos en línea.
+
+Orden: #menu a:hover (1,1,1) empata con #menu a.activo (1,1,1); la regla
+de hover va después para que gane.
+
+Foco: contorno de 3px en Azul Noche (14.83:1 sobre Crema), que reemplaza
+el contorno por defecto del navegador.
+Contrastes de estados: menú 5.57:1, activo 4.93:1, hover/foco 15.97:1,
+botón 5.31:1, botón hover 15.97:1.
+Recorrido con Tab en las tres páginas: en todas se ve el foco en enlaces
+del menú, botones y campos (contorno azul noche o fondo azul noche), y
+con :hov en DevTools comprobé los estados :hover y :focus.
+
+13. BOX MODEL (MiniReto 12)
+
+Medición del ancho de una tarjeta (article de "Alquiler de bicicletas"),
+DevTools > Computed, con la ventana ancha (main en su máximo de 60rem):
+- Con box-sizing: border-box:  912 px
+- Con box-sizing: content-box: 862 px
+Diferencia: 50 px = padding (2 x 24 px) + borde (2 x 1 px).
+
+Conclusión: con content-box el width de Computed mide solo el contenido
+y el padding y el borde se suman por fuera; con border-box el width ya
+incluye todo. Como la tarjeta tiene width auto, la caja ocupa 912 px en
+ambos casos; la diferencia aparece cuando se define un width fijo (por
+ejemplo 100%), donde content-box haría que la caja se desborde.
+
+Unidades: rem para espaciados y anchos máximos, % para imágenes,
+vh para la altura mínima de la portada y px solo para bordes de 1 px.
+Menú en fila con display: flex.

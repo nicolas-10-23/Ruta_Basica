@@ -1,3 +1,8 @@
+/* ========== Reinicio del modelo de caja ========== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* ========== Variables globales ========== */
 :root {
     /* Colores de marca */
@@ -17,6 +22,10 @@
     --espacio-2: 1rem;
     --espacio-3: 1.5rem;
     --espacio-4: 2rem;
+
+    /*anchodel contenido y bordes*/
+    --ancho-contenido: 60rem;
+    --ancho-lectura: 40rem;
 }
 
 /* ========== Cuerpo: base que se hereda ========== */
@@ -139,4 +148,114 @@ textarea:focus {
     outline: 3px solid var(--color-azul-noche);
     outline-offset: 2px;
     border-color: var(--color-azul-noche);
+}
+/* ========== Contenedor principal ========== */
+main {
+    max-width: var(--ancho-contenido);
+    margin: 0 auto;
+    padding: var(--espacio-3);
+}
+
+header,
+footer {
+    max-width: var(--ancho-contenido);
+    margin: 0 auto;
+    padding: var(--espacio-2) var(--espacio-3);
+}
+
+/* Líneas de texto más cortas en pantallas grandes */
+main p,
+main li {
+    max-width: var(--ancho-lectura);
+}
+
+/* ========== Portada ========== */
+.portada {
+    display: block;
+    width: 100%;
+    min-height: 40vh;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* ========== Tarjetas de servicios ========== */
+article {
+    padding: var(--espacio-3);
+    margin-bottom: var(--espacio-3);
+    border: 1px solid var(--color-gris-asfalto);
+    border-radius: 0.5rem;
+}
+
+article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: var(--espacio-2);
+    border-radius: 0.25rem;
+}
+
+/* ========== Tablas ========== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--espacio-2);
+}
+
+caption {
+    padding: var(--espacio-1);
+    text-align: left;
+    font-weight: 600;
+}
+
+th,
+td {
+    padding: var(--espacio-2);
+    border: 1px solid var(--color-gris-asfalto);
+    text-align: left;
+}
+
+thead th {
+    background-color: var(--color-azul-noche);
+    color: var(--color-blanco);
+}
+
+/* ========== Formulario ========== */
+fieldset {
+    margin-bottom: var(--espacio-3);
+    padding: var(--espacio-3);
+    border: 1px solid var(--color-gris-asfalto);
+    border-radius: 0.5rem;
+}
+
+legend {
+    padding: 0 var(--espacio-1);
+    font-weight: 600;
+}
+
+label {
+    display: block;
+    margin-bottom: var(--espacio-1);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: var(--espacio-1) var(--espacio-2);
+}
+
+/* Radios y casilla: etiqueta junto al control, no encima */
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    display: inline-block;
+    margin-right: var(--espacio-2);
+}
+
+button.boton-cta {
+    padding: var(--espacio-2) var(--espacio-4);
 }
