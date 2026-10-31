@@ -1,0 +1,296 @@
+/* ==========================================================
+   1. VARIABLES GLOBALES
+   ========================================================== */
+:root {
+    /* Colores de marca */
+    --color-verde-ruta: #1E7A4F;
+    --color-naranja-pedal: #F39A2B;
+    --color-azul-noche: #14213D;
+    --color-crema: #FAF6EF;
+    --color-gris-asfalto: #5B6470;
+    --color-blanco: #FFFFFF;
+
+    /* Tipografías con respaldo */
+    --fuente-titulos: "Montserrat", Arial, sans-serif;
+    --fuente-texto: "Open Sans", Arial, sans-serif;
+
+    /* Escala de espaciado */
+    --espacio-1: 0.5rem;
+    --espacio-2: 1rem;
+    --espacio-3: 1.5rem;
+    --espacio-4: 2rem;
+
+    /* Anchos */
+    --ancho-contenido: 60rem;
+    --ancho-lectura: 40rem;
+}
+
+/* ==========================================================
+   2. BASE: reinicio, cuerpo, tipografía y enlaces
+   ========================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-texto);
+    color: var(--color-azul-noche);
+    background-color: var(--color-crema);
+    /* Espacio al final para que el botón fijo de WhatsApp no tape el pie */
+    padding-bottom: calc(var(--espacio-4) * 2);
+}
+
+h1, h2, h3 {
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+}
+
+strong {
+    font-weight: 600;
+}
+
+a {
+    color: var(--color-verde-ruta);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--color-azul-noche);
+    text-decoration-thickness: 3px;
+}
+
+/* ==========================================================
+   3. ESTRUCTURA: header, main y footer
+   ========================================================== */
+header,
+main,
+footer {
+    max-width: var(--ancho-contenido);
+    margin: 0 auto;
+}
+
+header,
+footer {
+    padding: var(--espacio-2) var(--espacio-3);
+}
+
+main {
+    padding: var(--espacio-3);
+}
+
+footer {
+    color: var(--color-gris-asfalto);
+}
+
+/* Líneas de texto más cortas en pantallas grandes */
+main p,
+main li {
+    max-width: var(--ancho-lectura);
+}
+
+/* ==========================================================
+   4. NAVEGACIÓN
+   ========================================================== */
+#menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+    padding: 0;
+    margin: 0;
+}
+
+#menu a {
+    display: inline-block;
+    padding: var(--espacio-1) var(--espacio-2);
+    color: var(--color-gris-asfalto);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+/* Especificidad (1,1,1): supera a #menu a (1,0,1) sin !important */
+#menu a.activo {
+    color: var(--color-verde-ruta);
+    font-weight: 600;
+    border-bottom-color: var(--color-verde-ruta);
+}
+
+/* Va DESPUÉS de .activo: empatan en (1,1,1) y gana la última */
+#menu a:hover,
+#menu a:focus {
+    background-color: var(--color-azul-noche);
+    color: var(--color-blanco);
+}
+
+/* ==========================================================
+   5. COMPONENTES
+   ========================================================== */
+
+/* --- Portada --- */
+.portada {
+    display: block;
+    width: 100%;
+    min-height: 40vh;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* --- Tarjetas de servicios (article) --- */
+article {
+    position: relative; /* ancla de la etiqueta "Nuevo" */
+    padding: var(--espacio-3);
+    margin-bottom: var(--espacio-3);
+    border: 1px solid var(--color-gris-asfalto);
+    border-radius: 0.5rem;
+}
+
+article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: var(--espacio-2);
+    border-radius: 0.25rem;
+}
+
+/* --- Etiqueta "Nuevo": absoluta, no desplaza el contenido --- */
+.etiqueta-nuevo {
+    position: absolute;
+    top: var(--espacio-1);
+    right: var(--espacio-1);
+    padding: 0.25rem var(--espacio-1);
+    background-color: var(--color-naranja-pedal);
+    color: var(--color-azul-noche); /* 7.20:1 */
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+}
+
+/* --- Botón de llamada a la acción --- */
+.boton-cta {
+    display: inline-block;
+    padding: var(--espacio-1) var(--espacio-3);
+    background-color: var(--color-verde-ruta);
+    color: var(--color-blanco);
+    border: 2px solid var(--color-verde-ruta);
+    border-radius: 0.5rem;
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton-cta:hover,
+.boton-cta:focus {
+    background-color: var(--color-azul-noche);
+    border-color: var(--color-azul-noche);
+    color: var(--color-blanco);
+}
+
+button.boton-cta {
+    padding: var(--espacio-2) var(--espacio-4);
+}
+
+/* --- WhatsApp: fijo en la esquina inferior derecha --- */
+.whatsapp {
+    position: fixed;
+    right: var(--espacio-2);
+    bottom: var(--espacio-2);
+    z-index: 10;
+}
+
+/* --- Tablas --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--espacio-2);
+}
+
+caption {
+    padding: var(--espacio-1);
+    text-align: left;
+    font-weight: 600;
+}
+
+th,
+td {
+    padding: var(--espacio-2);
+    border: 1px solid var(--color-gris-asfalto);
+    text-align: left;
+}
+
+thead th {
+    background-color: var(--color-azul-noche);
+    color: var(--color-blanco);
+}
+
+/* ==========================================================
+   6. FORMULARIO
+   ========================================================== */
+fieldset {
+    margin-bottom: var(--espacio-3);
+    padding: var(--espacio-3);
+    border: 1px solid var(--color-gris-asfalto);
+    border-radius: 0.5rem;
+}
+
+legend {
+    padding: 0 var(--espacio-1);
+    font-weight: 600;
+}
+
+label {
+    display: block;
+    margin-bottom: var(--espacio-1);
+}
+
+/* Radios y casilla: la etiqueta va junto al control */
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    display: inline-block;
+    margin-right: var(--espacio-2);
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-azul-noche);
+    border: 2px solid var(--color-gris-asfalto);
+    border-radius: 0.25rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: var(--espacio-1) var(--espacio-2);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--color-verde-ruta);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-azul-noche);
+}
+
+/*  7. FOCO VISIBLE (una sola regla para todos los controles)*/
+a:focus,
+.boton-cta:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--color-azul-noche);
+    outline-offset: 3px;
+}

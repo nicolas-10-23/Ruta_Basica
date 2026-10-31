@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserva tu bicicleta en Rueda Libre, Medellín. Consulta el horario de atención y escríbenos por correo.">
+    <title>Reservas | Rueda Libre</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul id="menu">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="tarifas.html">Tarifas y rutas</a></li>
+                <li><a href="reservas.html" class="activo" aria-current="page">Reservas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Reserva tu bicicleta</h1>
+
+        <p>
+            Completa el formulario o escríbenos a
+            <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>
+            y confirmamos tu reserva.
+        </p>
+
+        <section>
+            <h2>Horario de atención</h2>
+            <aside>
+                <dl>
+                    <dt>Lunes a viernes</dt>
+                    <dd>7:00 a. m. a 7:00 p. m.</dd>
+
+                    <dt>Sábados, domingos y festivos</dt>
+                    <dd>6:00 a. m. a 2:00 p. m.</dd>
+                </dl>
+            </aside>
+        </section>
+
+        <section>
+            <h2>Formulario de reserva</h2>
+
+            <form action="#" method="post">
+
+                <fieldset>
+                    <legend>Tus datos</legend>
+
+                    <p>
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="60" autocomplete="name">
+                    </p>
+
+                    <p>
+                        <label for="documento">Número de documento</label>
+                        <input type="text" id="documento" name="documento" required inputmode="numeric" maxlength="10" pattern="[0-9]{6,10}" title="Solo números, entre 6 y 10 dígitos, sin puntos ni espacios">
+                    </p>
+
+                    <p>
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" required maxlength="100" autocomplete="email">
+                    </p>
+
+                    <p>
+                        <label for="celular">Celular</label>
+                        <input type="tel" id="celular" name="celular" required inputmode="numeric" maxlength="10" pattern="3[0-9]{9}" title="10 dígitos que empiecen por 3, sin espacios ni +57" autocomplete="tel">  </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Tu alquiler</legend>
+
+                    <p>
+                        <label for="fecha">Fecha del alquiler</label>
+                        <input type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
+                    </p>
+
+                    <fieldset>
+                        <legend>Tipo de bicicleta</legend>
+
+                        <input type="radio" id="tipo-urbana" name="tipo-bicicleta" value="urbana" required>
+                        <label for="tipo-urbana">Urbana</label>
+
+                        <input type="radio" id="tipo-montana" name="tipo-bicicleta" value="montana">
+                        <label for="tipo-montana">Montaña</label>
+
+                        <input type="radio" id="tipo-electrica" name="tipo-bicicleta" value="electrica">
+                        <label for="tipo-electrica">Eléctrica</label>
+                    </fieldset>
+
+                    <p>
+                        <label for="plan">Plan</label>
+                        <select id="plan" name="plan" required>
+                            <option value="">Selecciona un plan</option>
+                            <option value="1-hora">1 hora</option>
+                            <option value="medio-dia">Medio día (4 h)</option>
+                            <option value="dia-completo">Día completo</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="cantidad">Cantidad de bicicletas</label>
+                        <input type="number" id="cantidad" name="cantidad" required min="1" max="6" step="1" value="1">
+                    </p>
+
+
+                    <p>
+                        <label for="recorrido">Recorrido guiado</label>
+                        <select id="recorrido" name="recorrido">
+                            <option value="ninguno">Ninguno</option>
+                            <option value="rio-y-parques">Río y Parques</option>
+                            <option value="sabores-de-barrio">Sabores de Barrio</option>
+                            <option value="reto-las-palmas">Reto Las Palmas</option>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Confirmación</legend>
+
+                    <p>
+                        <label for="comentarios">Comentarios (opcional)</label><br>
+                        <textarea id="comentarios" name="comentarios" rows="4" cols="40" maxlength="300"></textarea>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="politicas" name="politicas" required>
+                        <label for="politicas">Acepto las políticas de alquiler</label>
+                    </p>
+
+                    <button type="submit" class="boton-cta">Enviar reserva</button>
+                </fieldset>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Rueda Libre</strong> · <a href="mailto:mail@ruedalibre.example">mail@ruedalibre.example</a> · &copy; 2026</p>
+    </footer>
+
+    <a class="boton-cta whatsapp" href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (se abre en otra pestaña)">WhatsApp</a>
+
+</body>
+</html>

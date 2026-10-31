@@ -1,0 +1,314 @@
+BITÁCORA - PROYECTO RUEDA LIBRE
+
+1. PETICIÓN DEL DOCUMENTO
+- URL completa: http://127.0.0.1:5500/index.html
+- Protocolo: http
+- Host: 127.0.0.1
+- Puerto: 5500
+- Ruta: /index.html
+- Método: GET
+- Código de estado: 200 OK (el servidor encontró el archivo y lo entregó)
+
+2. RUTA INEXISTENTE
+- URL probada: http://127.0.0.1:5500/promociones.html
+- Código de estado: 404 Not Found
+- Significado: el servidor respondió, pero no existe ese recurso en esa ruta.
+
+3. ROLES DE LAS TECNOLOGÍAS
+- HTML (estructura y contenido): define qué hay en la página.
+  Ejemplo: el <h1> con el nombre del negocio y una lista de bicicletas disponibles.
+- CSS (presentación): define cómo se ve.
+  Ejemplo: fondo claro, botón de "Reservar" en verde y las tarjetas de servicios con borde y espaciado.
+- JavaScript (comportamiento): define cómo reacciona.
+  Ejemplo: calcular el precio total del alquiler cuando el usuario cambia las horas o los días.
+
+4. TABLA DE RUTAS RELATIVAS (v0.1)
+
+Origen                  | Destino  | Ruta escrita
+------------------------|----------|-----------------------
+index.html              | Inicio   | index.html
+index.html              | Tarifas  | paginas/tarifas.html
+index.html              | Reservas | paginas/reservas.html
+paginas/tarifas.html    | Inicio   | ../index.html
+paginas/tarifas.html    | Tarifas  | tarifas.html
+paginas/tarifas.html    | Reservas | reservas.html
+paginas/reservas.html   | Inicio   | ../index.html
+paginas/reservas.html   | Tarifas  | tarifas.html
+paginas/reservas.html   | Reservas | reservas.html
+
+5. ESQUEMA SEMÁNTICO (v0.2)
+
+Regla:
+- section = bloque temático que tiene su propio encabezado.
+- article = contenido que tiene sentido por sí solo (cada servicio).
+- aside = contenido complementario al contenido principal.
+
+index.html
+- header
+  - nav (Inicio, Tarifas y rutas, Reservas)
+  - Rueda Libre (h1)
+- main
+  - img portada
+  - section: ¿Quiénes somos? (h2)
+  - section: Nuestros servicios (h2)
+    - article: Alquiler de bicicletas (h3)
+    - article: Recorridos guiados (h3)
+    - article: Taller básico (h3)
+  - section: ¿Por qué alquilar con nosotros? (h2)
+  - section: ¿Cómo alquilar? (h2)
+  - section: Encuéntranos (h2)
+- footer (nombre, correo, año)
+
+paginas/tarifas.html
+- header
+  - logo
+  - nav
+  - título (h1)
+- main
+  - section: Tarifas de alquiler (h2) -> tabla de alquiler
+  - section: Recorridos guiados (h2) -> tabla de recorridos
+  - section: Información importante (h2)
+    - aside: Qué llevar (h3) -> lista
+- footer
+
+paginas/reservas.html
+- header
+  - nav
+- main
+  - h1: Reserva tu bicicleta + párrafo con el correo
+  - section: Horario de atención (h2)
+    - aside -> lista de definiciones (dl)
+  - section: Formulario de reserva (h2)
+    - form con tres fieldset: Tus datos, Tu alquiler y Confirmación
+- footer
+
+JUSTIFICACIÓN DE div Y span
+No se usó ningún div ni span: cada bloque tiene una etiqueta
+semántica equivalente (header, nav, main, section, article,
+aside, footer).
+
+6. JUSTIFICACIÓN DE CONTROLES (formulario de reservas)
+
+- Tipo de bicicleta: radio. Son solo 3 opciones y se elige una; con el
+  mismo name ("tipo-bicicleta") el navegador impide marcar dos.
+- Número de documento: text y no number. Es un identificador, no se suma
+  ni se resta, y number podría borrar ceros iniciales.
+- Fecha del alquiler: date. Muestra un calendario y evita fechas
+  escritas con formatos equivocados.
+
+Otros controles elegidos:
+- Plan y recorrido guiado: select, porque son listas fijas de opciones.
+- Comentarios: textarea, porque admite texto largo de varias líneas.
+- Políticas: checkbox, porque es una respuesta de sí o no.
+
+Nota estructural: en reservas.html el h1 va dentro de main y el
+formulario es una section dentro de main.
+
+Limitación: la validación del navegador se puede saltar editando el
+HTML en DevTools; cuando haya servidor, deberá validar de nuevo.
+
+7. PRUEBAS DE VALIDACIÓN
+
+Reglas aplicadas:
+- Nombre: required, minlength 3.
+- Documento: required, pattern [0-9]{6,10}, con title.
+- Correo: required, type email.
+- Celular: required, pattern 3[0-9]{9}, con title.
+- Fecha: required, min 2026-11-01, max 2026-12-31.
+- Tipo de bicicleta y plan: required.
+- Cantidad: required, min 1, max 6.
+- Comentarios: opcional, maxlength 300.
+- Políticas: required.
+
+Campo      | Dato de prueba | Resultado esperado     | Resultado obtenido
+-----------|----------------|------------------------|---------------------------------------------
+Nombre     | "Al"           | Rechaza (mínimo 3)     | Rechazó: el navegador pidió alargar el texto
+Nombre     | "Ana"          | Acepta                 | Aceptó: sin avisos en el campo
+Documento  | "12345abc"     | Rechaza (letras)       | Rechazó: mostró el mensaje del title
+Documento  | "12345"        | Rechaza (menos de 6)   | Rechazó: mostró el mensaje del title
+Documento  | "1234567890"   | Acepta                 | Aceptó: sin avisos en el campo
+Correo     | "juan@"        | Rechaza (formato)      | Rechazó: pidió un correo con formato válido
+Celular    | "3001234567"   | Acepta                 | Aceptó: sin avisos en el campo
+Celular    | "1234567890"   | Rechaza (no empieza 3) | Rechazó: mostró el mensaje del title
+Celular    | "300123"       | Rechaza (muy corto)    | Rechazó: mostró el mensaje del title
+Fecha      | 31/10/2026     | Rechaza (fuera rango)  | Rechazó: pidió una fecha dentro del rango
+Fecha      | 01/01/2027     | Rechaza (fuera rango)  | Rechazó: pidió una fecha dentro del rango
+Cantidad   | 0              | Rechaza (min 1)        | Rechazó: pidió un valor mayor o igual a 1
+Cantidad   | 7              | Rechaza (max 6)        | Rechazó: pidió un valor menor o igual a 6
+Políticas  | sin marcar     | Rechaza (obligatorio)  | Rechazó: pidió marcar la casilla
+
+Observaciones:
+- En el calendario, los días fuera del rango (antes del 1 de noviembre
+  y después del 31 de diciembre de 2026) aparecen deshabilitados.
+- Si la fecha se escribe a mano, la validación salta al enviar.
+- maxlength="10" impide escribir más de 10 dígitos en documento y celular.
+
+Recorrido con teclado:
+Recorrí el formulario completo solo con teclado (Tab y Shift + Tab para
+moverme, flechas en los radios y selects, barra espaciadora en la casilla
+y Enter para enviar). El orden fue: nombre, documento, correo, celular,
+fecha, tipo de bicicleta, plan, cantidad, recorrido, comentarios,
+políticas y botón de envío. No hubo saltos ilógicos ni fue necesario
+corregir el orden. Todo funcionó como se esperaba.
+
+8. AUDITORÍA DE ACCESIBILIDAD
+
+Hallazgo                                         | Corrección
+-------------------------------------------------|---------------------------------------------
+Los alt podían no coincidir con la imagen real   | Revisé cada imagen y ajusté el alt a lo que muestra
+Enlace del mapa abría otra pestaña sin avisar    | Agregué "(se abre en otra pestaña)" al texto
+El menú no indicaba la página actual             | Agregué aria-current="page" en cada página
+"Reservar ahora" era vago fuera de contexto      | Lo cambié a "Reservar mi bicicleta"
+URL del mapa con & sin escapar                   | Reemplacé & por &amp;
+Alt de la portada con un espacio doble           | Dejé un solo espacio
+Falta de </p> en el campo de correo (reservas)   | Cerré la etiqueta para que la estructura sea correcta
+Idioma, encabezados, tablas y labels             | Verificados: sin cambios (lang="es", un h1 por página, sin saltos)
+
+Recorrido con teclado: revisé las tres páginas con Tab, Shift + Tab y Enter;
+todos los enlaces del menú y del contenido son alcanzables en orden lógico.
+
+9. CONTRASTE Y MAPA DE USO DE COLOR
+
+Combinación                        | Ratio    | Clasificación
+-----------------------------------|----------|----------------------------
+Blanco sobre Verde Ruta            | 5.31:1   | Apta texto normal
+Blanco sobre Naranja Pedal         | 2.22:1   | No apta
+Azul Noche sobre Naranja Pedal     | 7.20:1   | Apta texto normal
+Azul Noche sobre Crema             | 14.83:1  | Apta texto normal
+Gris Asfalto sobre Crema           | 5.57:1   | Apta texto normal
+Verde Ruta sobre Crema             | 4.93:1   | Apta texto normal
+Naranja Pedal sobre Crema          | 2.06:1   | No apta
+Blanco sobre Azul Noche            | 15.97:1  | Apta texto normal
+
+Mapa de uso:
+- Fondo general: Crema.
+- Texto principal y títulos: Azul Noche.
+- Texto secundario: Gris Asfalto.
+- Encabezado: fondo Crema con menú en Gris Asfalto.
+- Botón principal: fondo Verde Ruta con texto blanco.
+- Botón secundario: fondo Naranja Pedal con texto Azul Noche (nunca blanco).
+- Enlaces: Verde Ruta subrayado.
+- Naranja sobre Crema: solo decoración, nunca para texto.
+Valores verificados con WebAIM Contrast Checker.
+
+10. PUBLICACIÓN
+
+URL del sitio v0.2: https://nicolas-10-23.github.io/rueda-libre/
+Publicado desde la rama main (carpeta raíz) en GitHub Pages.
+Revisé las tres páginas, las imágenes y los enlaces en línea: las tres
+páginas cargan, las imágenes se ven y los enlaces del menú y del contenido
+funcionan sin errores 404. Un fallo inicial en el menú de paginas/ se
+corrigió ajustando las rutas relativas (tarifas.html y reservas.html sin
+"paginas/" porque ya están en esa carpeta).
+La URL también está en la descripción del repositorio.
+
+11. CSS BASE Y HERENCIA
+
+Archivos: css/styles.css, enlazado en las tres páginas
+(css/styles.css desde index.html; ../css/styles.css desde paginas/).
+Fuentes: Montserrat 700 (títulos) y Open Sans 400 y 600 (textos),
+cargadas desde Google Fonts antes de styles.css.
+
+Variables declaradas en :root: 6 colores (5 de marca + blanco),
+2 familias tipográficas con respaldo, 4 tamaños de espaciado en rem y,
+desde el MiniReto 12, 2 anchos (--ancho-contenido y --ancho-lectura).
+
+Verificación: sin style="" ni <style> en ningún HTML.
+
+Comprobación de herencia (DevTools, Computed, párrafo de index.html):
+- Se hereda: font-family. El párrafo muestra Open Sans sin tener la
+  regla propia; la recibe del body.
+- No se hereda: background-color. El párrafo tiene fondo transparente;
+  el crema es del body, no del párrafo.
+
+12. ESPECIFICIDAD Y ESTADOS
+
+Conflicto: el enlace con clase "activo" salía gris en vez de verde.
+
+Especificidad (ids, clases, elementos):
+- #menu a  = (1, 0, 1)
+- .activo  = (0, 1, 0)
+Se compara de izquierda a derecha: 1 id > 0 ids, así que #menu a gana y
+el color de .activo aparece tachado en DevTools. El font-weight sí se
+aplicó porque #menu a no lo define.
+
+Solución: cambié la regla a "#menu a.activo" = (1, 1, 1), que supera a
+(1, 0, 1). Sin !important ni estilos en línea.
+
+Orden: #menu a:hover (1,1,1) empata con #menu a.activo (1,1,1); la regla
+de hover va después para que gane.
+
+Foco: contorno de 3px en Azul Noche (14.83:1 sobre Crema), que reemplaza
+el contorno por defecto del navegador.
+Contrastes de estados: menú 5.57:1, activo 4.93:1, hover/foco 15.97:1,
+botón 5.31:1, botón hover 15.97:1.
+Recorrido con Tab en las tres páginas: en todas se ve el foco en enlaces
+del menú, botones y campos (contorno azul noche o fondo azul noche), y
+con :hov en DevTools comprobé los estados :hover y :focus.
+
+13. BOX MODEL
+
+Medición del ancho de una tarjeta (article de "Alquiler de bicicletas"),
+DevTools > Computed, con la ventana ancha (main en su máximo de 60rem):
+- Con box-sizing: border-box:  912 px
+- Con box-sizing: content-box: 862 px
+Diferencia: 50 px = padding (2 x 24 px) + borde (2 x 1 px).
+
+Conclusión: con content-box el width de Computed mide solo el contenido
+y el padding y el borde se suman por fuera; con border-box el width ya
+incluye todo. Como la tarjeta tiene width auto, la caja ocupa 912 px en
+ambos casos; la diferencia aparece cuando se define un width fijo (por
+ejemplo 100%), donde content-box haría que la caja se desborde.
+
+Unidades: rem para espaciados y anchos máximos, % para imágenes,
+vh para la altura mínima de la portada y px solo para bordes de 1 px.
+Menú en fila con display: flex.
+
+14. POSICIONAMIENTO Y REVISIÓN FINAL
+
+- Etiqueta "Nuevo": position absolute con top/right dentro de la tarjeta
+  "Bicicletas eléctricas", que tiene position relative. Al salir del flujo
+  normal no desplaza el contenido. Texto Azul Noche sobre Naranja Pedal
+  (7.20:1).
+- Enlace de WhatsApp: position fixed con right y bottom, en las tres
+  páginas, con texto visible "WhatsApp" y aria-label que avisa que abre
+  otra pestaña. Reutiliza la clase boton-cta (Verde Ruta con texto blanco,
+  5.31:1) y es alcanzable con Tab.
+- Espacio final: padding-bottom en body para que el botón fijo no tape
+  el pie de página.
+- Justificación del único span: la etiqueta "Nuevo" no tiene una etiqueta
+  semántica equivalente; es solo una marca visual.
+- Consistencia: logo en el header de las tres páginas y un solo styles.css.
+  Diferencia conocida: en reservas.html el h1 está en main.
+- Limpieza de styles.css: organizado en 7 secciones comentadas; las reglas
+  de foco repetidas se agruparon en una sola.
+- Revisión: sin declaraciones tachadas inesperadas, sin 404 y recorrido
+  con teclado en las tres páginas.
+
+
+15. CIERRE DE LA SEMANA
+
+Qué construí en cada MiniReto:
+1. Kilómetro 0: repositorio, carpetas, index.html base y bitácora.
+2. La vitrina: página de inicio con encabezados, listas, imágenes y enlaces.
+3. Tarifas claras: tablas accesibles y rutas relativas entre carpetas.
+4. v0.1: reservas inicial, menú y pie comunes.
+5. Estructura con significado: header, nav, main, section, article, aside y footer.
+6. El formulario: fieldsets, controles y labels.
+7. Reservas sin errores: validación nativa, pruebas y uso con teclado.
+8. v0.2 en línea: auditoría de accesibilidad, contraste y GitHub Pages.
+9. La identidad: hoja externa, variables, tipografías y colores.
+10. Navegación con estados: clase activa, especificidad, :hover y :focus.
+11. Todo en su lugar: box model, tarjetas, tablas y formulario.
+12. v1.0: posicionamiento, revisión final y lanzamiento.
+
+Lo que mejoraría:
+- Conectar el formulario a un servidor y validar también allá.
+- Hacer el diseño responsivo con media queries (el sitio todavía no se
+  adapta a celulares).
+- Calcular la fecha mínima del formulario con JavaScript.
+- Optimizar el peso de las imágenes y agregar favicon.
+- Unificar la ubicación del h1 en las tres páginas.
+- Aplicar el encabezado oscuro del mapa de color con un menú de otro tono.
+
+URL del sitio v1.0: https://nicolas-10-23.github.io/rueda-libre/
