@@ -6,6 +6,7 @@
     --color-azul-noche: #14213D;
     --color-crema: #FAF6EF;
     --color-gris-asfalto: #5B6470;
+    --color-blanco: #FFFFFF;
 
     /* Tipografías con respaldo */
     --fuente-titulos: "Montserrat", Arial, sans-serif;
@@ -43,4 +44,99 @@ strong {
 
 footer {
     color: var(--color-gris-asfalto);
+}
+
+/* ========== Enlaces: estados ========== */
+a:hover {
+    color: var(--color-azul-noche);
+    text-decoration-thickness: 3px;
+}
+
+a:focus {
+    outline: 3px solid var(--color-azul-noche);
+    outline-offset: 3px;
+}
+
+/* ========== Menú ========== */
+#menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+    padding: 0;
+    margin: 0;
+}
+
+#menu a {
+    display: inline-block;
+    padding: var(--espacio-1) var(--espacio-2);
+    color: var(--color-gris-asfalto);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+/* Corrección del conflicto: (1,1,1) supera a #menu a (1,0,1) */
+#menu a.activo {
+    color: var(--color-verde-ruta);
+    font-weight: 600;
+    border-bottom-color: var(--color-verde-ruta);
+}
+
+/* Va DESPUÉS de .activo: empatan en (1,1,1) y gana la última */
+#menu a:hover,
+#menu a:focus {
+    background-color: var(--color-azul-noche);
+    color: var(--color-blanco);
+}
+
+/* ========== Botón de llamada a la acción ========== */
+.boton-cta {
+    display: inline-block;
+    padding: var(--espacio-1) var(--espacio-3);
+    background-color: var(--color-verde-ruta);
+    color: var(--color-blanco);
+    border: 2px solid var(--color-verde-ruta);
+    border-radius: 0.5rem;
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton-cta:hover,
+.boton-cta:focus {
+    background-color: var(--color-azul-noche);
+    border-color: var(--color-azul-noche);
+    color: var(--color-blanco);
+}
+
+.boton-cta:focus {
+    outline: 3px solid var(--color-azul-noche);
+    outline-offset: 3px;
+}
+
+/* ========== Campos del formulario ========== */
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-azul-noche);
+    border: 2px solid var(--color-gris-asfalto);
+    border-radius: 0.25rem;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--color-verde-ruta);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--color-azul-noche);
+    outline-offset: 2px;
+    border-color: var(--color-azul-noche);
 }
