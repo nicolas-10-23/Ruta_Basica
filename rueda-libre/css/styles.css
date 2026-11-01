@@ -78,14 +78,50 @@ main {
     padding: var(--espacio-3);
 }
 
-footer {
-    color: var(--color-gris-asfalto);
-}
-
 /* Líneas de texto más cortas en pantallas grandes */
 main p,
 main li {
     max-width: var(--ancho-lectura);
+}
+
+/* --- Encabezado (Flexbox): marca a un extremo, menú al otro --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-1);
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.marca img {
+    width: 3rem;
+    height: auto;
+}
+
+/* --- Pie (Flexbox): tres bloques en fila, alineados por arriba --- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--espacio-3);
+    color: var(--color-gris-asfalto);
+}
+
+footer p,
+footer address {
+    margin: 0;
+    font-style: normal;
 }
 
 /* ==========================================================
@@ -101,7 +137,6 @@ main li {
 }
 
 #menu a {
-    display: inline-block;
     padding: var(--espacio-1) var(--espacio-2);
     color: var(--color-gris-asfalto);
     text-decoration: none;
@@ -159,7 +194,7 @@ article img {
     right: var(--espacio-1);
     padding: 0.25rem var(--espacio-1);
     background-color: var(--color-naranja-pedal);
-    color: var(--color-azul-noche); /* 7.20:1 */
+    color: var(--color-azul-noche);
     font-size: 0.875rem;
     font-weight: 600;
     border-radius: 0.25rem;
@@ -285,7 +320,9 @@ textarea:focus {
     border-color: var(--color-azul-noche);
 }
 
-/*  7. FOCO VISIBLE (una sola regla para todos los controles)*/
+/* ==========================================================
+   7. FOCO VISIBLE (una sola regla para todos los controles)
+   ========================================================== */
 a:focus,
 .boton-cta:focus,
 input:focus,

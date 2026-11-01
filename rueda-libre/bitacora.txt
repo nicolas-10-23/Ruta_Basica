@@ -312,3 +312,34 @@ Lo que mejoraría:
 - Aplicar el encabezado oscuro del mapa de color con un menú de otro tono.
 
 URL del sitio v1.0: https://nicolas-10-23.github.io/rueda-libre/
+
+16. FLEXBOX EN ENCABEZADO Y PIE (MiniReto 13)
+
+Cambios:
+- header: display flex con justify-content space-between y align-items
+  center. Dos hijos: la marca (logo + nombre) y el nav.
+- menú: ul con display flex, flex-wrap wrap y gap. Se quitó el
+  inline-block de los enlaces; la separación la da gap, sin márgenes.
+- footer: display flex con tres bloques (marca, contacto y horario),
+  align-items flex-start, flex-wrap wrap y gap.
+- El h1 pasó al inicio de main en las tres páginas, para que el header
+  tenga el mismo contenido en todas.
+
+Observación al estrechar la ventana:
+- Encabezado: con ventana ancha, el logo con el nombre queda en el
+  extremo izquierdo y el menú en el derecho, centrados verticalmente
+  entre sí. Al estrechar, cuando ambos bloques ya no caben en una
+  línea, el menú baja debajo de la marca (flex-wrap) en lugar de
+  desbordarse ni solaparse.
+- Menú: con ventana ancha los tres enlaces van en una sola fila con
+  separación uniforme dada por gap. Al estrechar más, los enlaces
+  bajan de línea uno tras otro en lugar de salirse de la pantalla.
+- Pie: con ventana ancha, los tres bloques (marca, contacto y horario)
+  quedan en fila, alineados por arriba y repartidos con espacio uniforme.
+  Al estrechar, el último bloque baja a una segunda fila y, en pantallas
+  muy angostas, los tres quedan apilados uno bajo otro, siempre
+  separados por gap.
+
+Resultado: las tres páginas se ven igual porque los estilos están en la
+hoja compartida css/styles.css. Las reglas de header y footer se
+aplican sin cambios en index.html, tarifas.html y reservas.html.

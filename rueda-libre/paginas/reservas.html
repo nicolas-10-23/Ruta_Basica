@@ -13,6 +13,7 @@
 <body>
 
     <header>
+        <p class="marca"><img src="../img/logo.png" alt="Logo de Rueda Libre" width="48">Rueda Libre</p>
         <nav>
             <ul id="menu">
                 <li><a href="../index.html">Inicio</a></li>
@@ -53,8 +54,8 @@
                     <legend>Tus datos</legend>
 
                     <p>
-                            <label for="nombre">Nombre completo</label>
-                            <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="60" autocomplete="name">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="60" autocomplete="name">
                     </p>
 
                     <p>
@@ -69,7 +70,8 @@
 
                     <p>
                         <label for="celular">Celular</label>
-                        <input type="tel" id="celular" name="celular" required inputmode="numeric" maxlength="10" pattern="3[0-9]{9}" title="10 dígitos que empiecen por 3, sin espacios ni +57" autocomplete="tel">  </p>
+                        <input type="tel" id="celular" name="celular" required inputmode="numeric" maxlength="10" pattern="3[0-9]{9}" title="10 dígitos que empiecen por 3, sin espacios ni +57" autocomplete="tel">
+                    </p>
                 </fieldset>
 
                 <fieldset>
@@ -108,7 +110,6 @@
                         <input type="number" id="cantidad" name="cantidad" required min="1" max="6" step="1" value="1">
                     </p>
 
-
                     <p>
                         <label for="recorrido">Recorrido guiado</label>
                         <select id="recorrido" name="recorrido">
@@ -124,7 +125,7 @@
                     <legend>Confirmación</legend>
 
                     <p>
-                        <label for="comentarios">Comentarios (opcional)</label><br>
+                        <label for="comentarios">Comentarios (opcional)</label>
                         <textarea id="comentarios" name="comentarios" rows="4" cols="40" maxlength="300"></textarea>
                     </p>
 
@@ -141,7 +142,19 @@
     </main>
 
     <footer>
-        <p><strong>Rueda Libre</strong> · <a href="mailto:mail@ruedalibre.example">mail@ruedalibre.example</a> · &copy; 2026</p>
+        <p><strong>Rueda Libre</strong><br>Alquiler de bicicletas en Medellín<br>&copy; 2026</p>
+
+        <address>
+            <strong>Contacto</strong><br>
+            <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a><br>
+            <a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer">WhatsApp (se abre en otra pestaña)</a>
+        </address>
+
+        <p>
+            <strong>Horario</strong><br>
+            Lunes a viernes: 7:00 a. m. a 7:00 p. m.<br>
+            Sábados, domingos y festivos: 6:00 a. m. a 2:00 p. m.
+        </p>
     </footer>
 
     <a class="boton-cta whatsapp" href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (se abre en otra pestaña)">WhatsApp</a>
