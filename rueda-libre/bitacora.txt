@@ -361,3 +361,24 @@ Columnas observadas (modo dispositivo de DevTools):
 - 1280 px: _3_ columnas
 - 900 px:  _3_ columnas
 - 500 px:  _1_ columnas
+
+18. LAYOUT CON GRID Y FLEXBOX (MiniReto 15)
+
+Decisiones (una dimensión = Flexbox; dos dimensiones = Grid):
+- Portada: Grid (1fr 1fr). Dos columnas: texto y foto. El texto se
+  centra verticalmente con align-items center; dentro del bloque de
+  texto uso Flexbox en columna (una dimensión).
+- Galería de rutas: Grid (repeat(3, 1fr)). Tres tarjetas iguales con
+  filas y columnas definidas; el gap las separa.
+- Reservas: Grid (2fr 1fr). Dos columnas en proporción 2:1 con fr,
+  sin porcentajes ni px.
+- Fila del formulario (documento y celular): Grid (1fr 1fr). Dos campos
+  de igual ancho; Flexbox también servía, pero Grid garantiza columnas
+  del mismo tamaño.
+- Encabezado: Flexbox. Una sola fila con marca y menú en extremos
+  (space-between) y alineados al centro.
+- Pie: Flexbox. Tres bloques en una sola fila, con wrap y gap.
+
+Justificación de los div: .hero-texto, .galeria, .reservas-layout y
+.fila-campos son contenedores de layout sin etiqueta semántica equivalente.
+Menú, flota y validación del formulario siguen funcionando.
