@@ -187,6 +187,29 @@ article img {
     border-radius: 0.25rem;
 }
 
+/* --- Flota: cuadrícula adaptable (Grid) --- */
+.flota {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--espacio-3);
+}
+
+/* Las tarjetas de la flota no necesitan margen: lo da el gap */
+.flota article {
+    display: flex;               /* contenido en columna */
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.flota .precio {
+    margin-top: auto;            /* empuja precio y botón al fondo */
+}
+
+.flota .boton-cta {
+    align-self: flex-start;
+    margin-top: var(--espacio-2);
+}
+
 /* --- Etiqueta "Nuevo": absoluta, no desplaza el contenido --- */
 .etiqueta-nuevo {
     position: absolute;

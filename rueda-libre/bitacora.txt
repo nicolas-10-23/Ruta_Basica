@@ -313,8 +313,7 @@ Lo que mejoraría:
 
 URL del sitio v1.0: https://nicolas-10-23.github.io/rueda-libre/
 
-16. FLEXBOX EN ENCABEZADO Y PIE (MiniReto 13)
-
+16. FLEXBOX EN ENCABEZADO Y PIE 
 Cambios:
 - header: display flex con justify-content space-between y align-items
   center. Dos hijos: la marca (logo + nombre) y el nav.
@@ -343,3 +342,22 @@ Observación al estrechar la ventana:
 Resultado: las tres páginas se ven igual porque los estilos están en la
 hoja compartida css/styles.css. Las reglas de header y footer se
 aplican sin cambios en index.html, tarifas.html y reservas.html.
+
+17. NUESTRA FLOTA CON GRID Y FLEXBOX 
+
+Cambios:
+- Sección "Nuestra flota" en index.html con 7 artículos (imagen, nombre,
+  descripción, precio y enlace "Reservar").
+- .flota: display grid con repeat(auto-fit, minmax(14rem, 1fr)) y gap.
+  Sin media queries: las columnas se calculan según el espacio.
+- Tarjetas: display flex en columna; el precio lleva margin-top auto y
+  empuja el botón al final, así los "Reservar" quedan alineados.
+- Séptimo modelo (Tándem): agregado solo en el HTML; la cuadrícula se
+  reorganizó sin tocar el CSS.
+- Justificación del div: es el contenedor de la cuadrícula y no existe
+  una etiqueta semántica equivalente.
+
+Columnas observadas (modo dispositivo de DevTools):
+- 1280 px: _3_ columnas
+- 900 px:  _3_ columnas
+- 500 px:  _1_ columnas
