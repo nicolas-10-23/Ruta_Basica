@@ -358,11 +358,11 @@ Cambios:
   una etiqueta semántica equivalente.
 
 Columnas observadas (modo dispositivo de DevTools):
-- 1280 px: _3_ columnas
-- 900 px:  _3_ columnas
-- 500 px:  _1_ columnas
+- 1280 px: 3 columnas
+- 900 px:  3 columnas
+- 500 px:  1 columnas
 
-18. LAYOUT CON GRID Y FLEXBOX (MiniReto 15)
+18. LAYOUT CON GRID Y FLEXBOX
 
 Decisiones (una dimensión = Flexbox; dos dimensiones = Grid):
 - Portada: Grid (1fr 1fr). Dos columnas: texto y foto. El texto se
