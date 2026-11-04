@@ -382,3 +382,85 @@ Decisiones (una dimensión = Flexbox; dos dimensiones = Grid):
 Justificación de los div: .hero-texto, .galeria, .reservas-layout y
 .fila-campos son contenedores de layout sin etiqueta semántica equivalente.
 Menú, flota y validación del formulario siguen funcionando.
+
+19. DISEÑO RESPONSIVE MOBILE-FIRST (MiniReto 16)
+
+Estrategia: los estilos base (sin media query) describen la versión móvil
+en una sola columna. Después se agregan dos media queries con min-width:
+768px (tablet) y 1200px (escritorio), solo para portada, galería,
+reservas, encabezado y pie.
+
+Comportamiento observado:
+- Encabezado: en móvil el nombre queda arriba y el menú centrado debajo;
+  desde 768 px vuelven a quedar en extremos opuestos, en una fila.
+- Pie: en móvil los tres bloques (marca, contacto y horario) van
+  apilados; desde 768 px quedan en fila.
+- Flota (auto-fit con minmax de 14rem): 360 px = 1 columna,
+  768 px = 3 columnas, 1280 px = 3 columnas (el contenido tiene un
+  máximo de 60rem y no caben 4).
+- Portada: 1 columna en móvil y 2 desde 768 px.
+- Galería de rutas: 1 columna en móvil y 3 desde 768 px.
+- Reservas: formulario y contacto apilados en móvil y en proporción
+  2:1 desde 768 px; documento y celular comparten fila desde 768 px.
+
+Decisiones Flexbox/Grid: sin cambios respecto a la sección 18.
+
+Problemas responsive encontrados y solución:
+1. Scroll horizontal a 360 px causado por el formulario. Causa: un
+   fieldset no se encoge por defecto y empuja la página más ancha que la
+   pantalla. Solución: min-width: 0 en fieldset.
+2. Las imágenes podían ser más anchas que su contenedor. Solución:
+   img { max-width: 100%; height: auto }.
+3. En la flota, minmax(14rem, 1fr) podía desbordar contenedores menores
+   a 14rem. Solución: minmax(min(14rem, 100%), 1fr).
+
+Publicación: v1.5 en https://nicolas-10-23.github.io/rueda-libre/
+La versión publicada se revisó en el celular: una columna, sin scroll
+lateral, menú centrado, tablas legibles y botón de WhatsApp sin tapar el
+pie.
+
+20. COMPARATIVA CSS PROPIO VS BOOTSTRAP (MiniReto 17)
+
+Página de pruebas: pruebas/catalogo-bootstrap.html (Bootstrap 5.3.3 por
+CDN: hoja de estilos en el head y bundle de JavaScript antes de </body>).
+No enlaza styles.css ni tiene CSS propio.
+
+Tiempo invertido:
+- Flota con Bootstrap: 25 minutos (plantilla, copiar los siete modelos,
+  ajustar rutas a ../img/ y poner las clases de grilla).
+- Flota con CSS propio (MiniReto 14): 45 minutos aproximados, incluyendo
+  la prueba de columnas y el ajuste de alineación de los botones.
+
+Cantidad de código de distribución de la flota:
+- CSS propio: 5 reglas, 11 declaraciones y unas 21 líneas (.flota,
+  .flota article, .flota article img, .flota .precio, .flota .boton-cta).
+  La cuadrícula en sí son 3 declaraciones: display grid,
+  repeat(auto-fit, minmax()) y gap, sin media queries.
+- Bootstrap: 0 líneas de CSS propio. Clases de grilla: 6 (row, g-3,
+  col-12, col-sm-6, col-lg-4, col-xl-3). Las 4 clases de columna se
+  repiten en cada una de las 7 columnas (28 clases de columna), más las
+  clases de tarjeta (card, h-100, card-body, d-flex, flex-column,
+  mt-auto, btn).
+
+Comprobación en modo dispositivo de DevTools:
+- 400 px: 1 columna. 600 px: 2 columnas. 1000 px: 3 columnas.
+- 1300 px: 4 columnas.
+- Network: CSS y JavaScript de Bootstrap con 200 y sin errores.
+
+Qué me dio Bootstrap sin esfuerzo:
+- Cuatro breakpoints (1, 2, 3 y 4 columnas) solo escribiendo clases.
+- Gutters uniformes con g-3.
+- Tarjetas con borde, esquinas y espaciado, y botones con estados
+  hover y focus, sin escribir CSS.
+
+Qué control perdí:
+- El número de columnas es fijo por breakpoint. Mi auto-fit se adaptaba
+  solo a cualquier ancho y a cualquier cantidad de modelos.
+- El HTML se llena de clases repetidas en cada tarjeta, mezclando
+  estructura con presentación.
+- Colores y tipografía son los de Bootstrap, no los de la marca; para
+  igualar la paleta habría que sobrescribir variables o escribir CSS.
+- Dependo de un CDN y de los hashes de integridad.
+
+Conclusión: Bootstrap es más rápido para prototipar, pero el CSS propio
+es más corto, más flexible y respeta mejor la identidad de Rueda Libre.
