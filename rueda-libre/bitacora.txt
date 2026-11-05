@@ -464,3 +464,45 @@ Qué control perdí:
 
 Conclusión: Bootstrap es más rápido para prototipar, pero el CSS propio
 es más corto, más flexible y respeta mejor la identidad de Rueda Libre.
+
+21. TAILWIND: PROTOTIPO DE RUEDA NOCTURNA (MiniReto 18)
+
+Archivo: nocturna/prototipo.html con el Play CDN de Tailwind 3.4.17
+(<script src="https://cdn.tailwindcss.com/3.4.17">), versión indicada por
+el curso. Sin <style>, sin style="" y sin clases de Bootstrap. Un solo h1.
+La sección incluye: etiqueta de campaña "Nuevo · Jueves a sábado", título
+"Rueda Nocturna", subtítulo, dos datos destacados ("3 rutas" y
+"Desde $55.000") y el enlace "Inscríbete".
+
+El botón "Inscríbete":
+- Con Bootstrap (semana 2): <a class="btn btn-success">. Dos clases y
+  Bootstrap me daba el botón completo: relleno, color, esquinas y estados
+  hover y focus, ya diseñados.
+- Con Tailwind (hoy): <a class="inline-block rounded-lg bg-emerald-600
+  px-8 py-3 text-lg font-semibold text-white hover:bg-emerald-500
+  focus:outline-none focus:ring-4 focus:ring-amber-400">. Cada clase hace
+  una sola cosa y yo armo el botón pieza por pieza.
+
+Diferencia clave: un framework de componentes (Bootstrap) entrega piezas
+ya diseñadas: es rápido, pero los sitios se parecen y para cambiar su
+estilo hay que sobrescribirlo. Un framework utility-first (Tailwind)
+entrega clases pequeñas y el diseño lo decido yo, con control sobre cada
+detalle, a costa de escribir más clases en el HTML.
+
+Familias de utilidades usadas:
+- Espaciado: px-6, py-16, space-y-6, gap-8, px-8, py-3, mx-auto.
+- Tamaños: max-w-3xl.
+- Colores: bg-slate-900, text-white, bg-amber-400, text-slate-900,
+  text-slate-300, bg-emerald-600.
+- Tipografía: text-4xl, font-bold, leading-tight, uppercase,
+  tracking-widest, text-center.
+
+Incidente: el Play CDN no cargaba y la página se veía sin estilos
+(ERR_NAME_NOT_RESOLVED en Network). Con nslookup comprobé que mi DNS
+rechazaba la consulta (Query refused), mientras que con 8.8.8.8 sí
+resolvía. Cambié el DNS del equipo a los de Google (IPv4 e IPv6) y vacié
+la caché con ipconfig /flushdns. Además, la vista previa de VS Code no
+ejecuta scripts externos, así que probé con Live Server.
+Copilot sugirió agregar integrity="sha384-" y crossorigin al script; el
+hash estaba incompleto y habría bloqueado la carga, así que lo descarté y
+dejé el script simple.
