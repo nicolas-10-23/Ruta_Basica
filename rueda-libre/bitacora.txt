@@ -535,3 +535,23 @@ Probados con Tab: el foco se ve en los tres y en el enlace "Inscríbete".
 
 Git: se sube src/output.css (GitHub Pages no ejecuta la CLI) y no
 node_modules, excluida con .gitignore.
+
+23. CARDS DE RUTAS CON TAILWIND
+
+Qué se hizo: sección "Rutas" en nocturna/index.html con tres cards
+(Luces del Centro, Miradores de la Ciudad y Luna en Las Palmas), una
+debajo de otra. Todas comparten estructura y clases base; solo cambian
+los datos y el color de la etiqueta. Sin CSS propio.
+
+Decisiones:
+- Imagen: h-48 w-full object-cover (alto uniforme, sin deformar).
+- Etiqueta de nivel: color distinto (verde, ámbar, rosa) y texto
+  "Nivel: Fácil/Medio/Difícil", para no depender solo del color.
+- Lista: nombre del dato en text-xs y text-slate-400; valor en
+  font-semibold.
+- Precio: text-3xl font-bold text-amber-400.
+- Hover: hover:shadow-2xl y hover:border-amber-400; el borde existe
+  siempre, así que el contenido no se desplaza.
+- Botón principal reutilizado del kit (emerald-700, anillo de foco).
+
+Verificación: hover sin movimiento , foco visible con Tab en los tres botones sin <style> ni style="".

@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --color-midnight: #070A1E;
+    --color-aburra: #111636;
+    --color-ciclon: #10B981;
+    --color-farola: #F59E0B;
+    --color-orquidea: #D946EF;
+    --color-niebla: #F1F5F9;
+    --color-asfalto: #94A3B8;
+}
