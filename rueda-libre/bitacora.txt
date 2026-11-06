@@ -628,3 +628,25 @@ Ancho   | Encabezado           | Rutas | Pasos | Pie / franja |
 
 Nota: los breakpoints son sm 640 px, md 768 px y lg 1024 px; por eso a
 768 px las rutas siguen en 2 columnas y pasan a 3 desde 1024 px.
+
+27. TEMA DE MARCA Y MODO OSCURO
+
+Qué se hizo: @theme en src/input.css con los seis colores de la marca
+(verde-ruta, naranja-pedal, azul-noche, crema, gris-asfalto,
+amarillo-farol), blanco, y las fuentes font-titulos (Montserrat) y
+font-texto (Open Sans), cargadas con link de Google Fonts. Con
+--color-*: initial se eliminan los colores genéricos. Landing y
+componentes.html reescritos solo con colores de marca.
+
+Modo oscuro: variante dark: con la estrategia por defecto (preferencia
+del sistema). Claro = fondo Crema, texto Azul Noche. Oscuro = fondo
+Azul Noche, texto Crema, cards bg-white/5.
+
+Contraste en oscuro: Verde Ruta sobre Azul Noche da ~3.0:1 y Gris
+Asfalto ~2.7:1, no cumplen 4.5:1. Corrección: el verde queda solo como
+fondo de botón con texto blanco (5.31:1); el texto secundario usa
+Crema al 75 % (~8.8:1) y los precios y números Amarillo Farol (~11:1).
+Valores confirmados con WebAIM Contrast Checker.
+
+Prueba: emulación prefers-color-scheme: dark en DevTools Modo claro
+con Crema y sin cambios de estructura.
