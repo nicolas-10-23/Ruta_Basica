@@ -465,7 +465,7 @@ Qué control perdí:
 Conclusión: Bootstrap es más rápido para prototipar, pero el CSS propio
 es más corto, más flexible y respeta mejor la identidad de Rueda Libre.
 
-21. TAILWIND: PROTOTIPO DE RUEDA NOCTURNA (MiniReto 18)
+21. TAILWIND: PROTOTIPO DE RUEDA NOCTURNA 
 
 Archivo: nocturna/prototipo.html con el Play CDN de Tailwind 3.4.17
 (<script src="https://cdn.tailwindcss.com/3.4.17">), versión indicada por
@@ -506,3 +506,32 @@ ejecuta scripts externos, así que probé con Live Server.
 Copilot sugirió agregar integrity="sha384-" y crossorigin al script; el
 hash estaba incompleto y habría bloqueado la carga, así que lo descarté y
 dejé el script simple.
+
+22. TAILWIND CON CLI 
+
+Instalación (en nocturna/): npm init -y, npm install tailwindcss
+@tailwindcss/cli. Archivos: src/input.css (@import "tailwindcss"),
+.gitignore (node_modules/) y src/output.css generado con
+"npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch".
+nocturna/index.html enlaza src/output.css y ya no usa el Play CDN.
+
+Qué encontré en output.css:
+- Clase que uso (bg-emerald-700): aparece como una regla .bg-emerald-700
+  con su background-color.
+- Clase que no uso (bg-pink-500): no aparece en el archivo.
+
+Por qué ocurre: la CLI escanea mis archivos, busca los nombres de clase
+que realmente aparecen y genera solo el CSS de esas. Así output.css
+queda pequeño y solo trae lo necesario. Si escribo bg-pink-500 en el
+HTML, la CLI la genera al guardar.
+
+Diferencia con el Play CDN: el CDN descarga un script grande y genera el
+CSS en el navegador de cada visitante; la CLI lo genera una vez en mi
+computador, y por eso es apta para producción.
+
+Botones (principal, secundario y contorno): cada uno tiene hover y un
+anillo de foco (focus:ring-4) que reemplaza el contorno del navegador.
+Probados con Tab: el foco se ve en los tres y en el enlace "Inscríbete".
+
+Git: se sube src/output.css (GitHub Pages no ejecuta la CLI) y no
+node_modules, excluida con .gitignore.
