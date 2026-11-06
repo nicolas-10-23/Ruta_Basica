@@ -604,3 +604,27 @@ Decisiones:
 
 Verificación: en escritorio el encabezado va en una fila, las rutas en
 3 columnas y los pasos en 4.
+
+26. LANDING RESPONSIVE MOBILE-FIRST
+
+Problemas a 360 px antes de adaptar (revisión del paso 1):
+- Encabezado desbordado: logo, tres enlaces y botón no caben en una fila.
+- Rutas y pasos en 3 y 4 columnas: columnas de unos 80 px con texto cortado.
+- Franja de inscripción y pie en fila quedaban comprimidos.
+- Título y datos destacados muy apretados.
+
+Solución: estilos sin prefijo para el celular y prefijos sm:, md: y lg:
+solo para agregar cambios en pantallas mayores. Enlaces del encabezado
+ocultos en móvil (hidden md:block); queda visible el botón "Inscríbete".
+
+Pruebas en modo dispositivo (esperado; confirmar):
+
+Ancho   | Encabezado           | Rutas | Pasos | Pie / franja |
+--------|----------------------|-------|-------|--------------|
+360 px  | Apilado, sin enlaces | 1     | 1     | Apilados     |
+768 px  | En fila con enlaces  | 2     | 2     | En fila      |
+1024 px | En fila con enlaces  | 3     | 4     | En fila      |
+1280 px | En fila con enlaces  | 3     | 4     | En fila      |
+
+Nota: los breakpoints son sm 640 px, md 768 px y lg 1024 px; por eso a
+768 px las rutas siguen en 2 columnas y pasan a 3 desde 1024 px.
