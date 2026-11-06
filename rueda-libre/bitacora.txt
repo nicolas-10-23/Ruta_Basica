@@ -555,3 +555,52 @@ Decisiones:
 - Botón principal reutilizado del kit (emerald-700, anillo de foco).
 
 Verificación: hover sin movimiento , foco visible con Tab en los tres botones sin <style> ni style="".
+
+24. KIT DE COMPONENTES
+
+Archivos: nocturna/componentes.html, src/input.css (tema con la paleta
+nueva) y src/output.css regenerado con la CLI. Sin <style>, style="" ni
+CSS propio.
+
+Reglas del kit:
+- Radios: rounded-lg en botones, cards, alertas y campos; rounded-full
+  solo en etiquetas de nivel.
+- Espaciado: escala de Tailwind. Botones px-6 py-3; cards p-6; alertas
+  p-4; campos px-4 py-3; separación entre elementos con space-y-2/4/6.
+- Colores: solo la paleta (midnight, aburra, ciclon, farola, orquidea,
+  niebla, asfalto, info). Texto sobre ciclon y farola siempre midnight.
+- Foco: anillo visible en todos (focus:ring-4); outline-none solo cuando
+  se reemplaza por el anillo.
+- Bordes de card: border-white/10; hover con border-farola.
+- Alertas: fondo suave (color/10), border-l-4 del color, título en
+  negrita; éxito con role="status".
+
+Comparación de enfoques: CSS propio (reglas reutilizadas por clase),
+Bootstrap (componentes ya hechos) y Tailwind (utilidades combinadas).
+Tailwind da control total, a costa de repetir clases en el HTML.
+
+Verificación de clases: en output.css busqué bg-ciclon y border-info
+(aparecen) y una clase no usada (no aparece), porque la CLI solo genera
+las clases que encuentra en mis archivos.
+
+Prueba: Tab recorre botones, card y campos con foco
+visible; la página publicada carga output.css sin 404.
+
+25. LAYOUT DE LA LANDING
+
+Qué se hizo: nocturna/index.html con encabezado, sección principal,
+rutas, ¿Cómo funciona?, franja de inscripción y pie, usando solo
+utilidades de Tailwind y los componentes del kit sin variantes nuevas.
+
+Decisiones:
+- Contenedor común: mx-auto max-w-6xl px-6 en todas las secciones.
+- Encabezado: flex (una dimensión) con items-center y justify-between.
+- Rutas: grid grid-cols-3 gap-6 (tres cards iguales).
+- Pasos: grid grid-cols-4 gap-6. Elegí grid porque quiero cuatro
+  columnas del mismo ancho sin importar el largo del texto; con flex
+  habría que forzar el ancho de cada hijo.
+- Pie: flex con tres bloques y justify-between.
+- Anclas: #rutas, #como-funciona e #inscripcion desde el encabezado
+
+Verificación: en escritorio el encabezado va en una fila, las rutas en
+3 columnas y los pasos en 4.
