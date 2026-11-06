@@ -107,7 +107,7 @@
 }
 
 /*
-! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -977,6 +977,48 @@ video {
   transition-property: box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+@theme {
+  --color-*: initial;
+
+  /* Paleta Coolors (fondos y superficies) */
+
+  --color-petroleo: #006466;
+
+  --color-pino: #065A60;
+
+  --color-mar: #0B525B;
+
+  --color-marino: #144552;
+
+  --color-acero: #1B3A4B;
+
+  --color-noche: #212F45;
+
+  --color-medianoche: #272640;
+
+  --color-ciruela: #312244;
+
+  --color-uva: #3E1F47;
+
+  --color-orquidea-oscuro: #4D194D;
+
+  /* Acentos y texto claro */
+
+  --color-crema: #FAF6EF;
+
+  --color-amarillo-farol: #FFD166;
+
+  --color-menta: #5EEAD4;
+
+  --color-orquidea: #F0ABFC;
+
+  --color-white: #FFFFFF;
+
+  --font-titulos: "Montserrat", Arial, sans-serif;
+
+  --font-texto: "Open Sans", Arial, sans-serif;
 }
 
 .placeholder\:text-gris-asfalto::-moz-placeholder {
