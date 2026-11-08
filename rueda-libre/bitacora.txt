@@ -650,3 +650,47 @@ Valores confirmados con WebAIM Contrast Checker.
 
 Prueba: emulación prefers-color-scheme: dark en DevTools Modo claro
 con Crema y sin cambios de estructura.
+
+Cambio de paleta : se reemplazó Azul Noche, Verde
+Ruta, Gris Asfalto y Naranja Pedal por la paleta de Coolors
+(#006466 a #4D194D) como fondos y superficies, más tres acentos claros
+(Crema, Amarillo Farol, menta y orquídea claro). Modo claro = Crema con
+texto #212F45; modo oscuro = #272640 con degradado en el hero.
+Contrastes (a verificar en WebAIM): #212F45 sobre Crema ~12:1; blanco
+sobre #006466 ~7:1; #272640 sobre Amarillo Farol ~10:1; Crema 75 %
+sobre #212F45 ~8:1. Petróleo sobre #272640 no cumple (~2:1), por eso en
+oscuro el botón es Amarillo Farol.
+
+28. INTEGRACIÓN DEL ECOSISTEMA
+
+Cambios:
+- Sitio principal: enlace "Rueda Nocturna" en el menú de las tres
+  páginas y un banner en el inicio hacia la landing.
+- Landing: logo y enlace "Sitio Rueda Libre" hacia el inicio del sitio,
+  botón "Reserva tu bici" hacia reservas y pie con los mismos datos
+  de contacto.
+
+Decisión: el sitio principal está hecho con CSS propio, así que no se
+usó Bootstrap (navbar, carrusel, --bs-*); se adaptó con el menú y las
+secciones existentes. La landing usa Tailwind 3 por indicación del
+curso: tema en tailwind.config.js y modo oscuro por preferencia del
+sistema (darkMode media).
+
+Rutas relativas usadas:
+Origen                  | Destino            | Ruta escrita
+------------------------|--------------------|-----------------------------
+index.html              | landing            | nocturna/index.html
+paginas/tarifas.html    | landing            | ../nocturna/index.html
+paginas/reservas.html   | landing            | ../nocturna/index.html
+nocturna/index.html     | inicio del sitio   | ../index.html
+nocturna/index.html     | reservas           | ../paginas/reservas.html
+
+Coherencia de marca: los cinco colores del sitio (#1E7A4F, #F39A2B,
+#14213D, #FAF6EF, #5B6470) están en styles.css y en tailwind.config.js
+con los mismos valores. Las fuentes son Montserrat 700 y Open Sans
+400/600 en ambos, y el pie repite correo, WhatsApp y horario. La
+campaña usa además la paleta de Coolors como fondos y superficies.
+
+Verificación: desde cada página del sitio se llega a la landing con un
+clic, y desde la landing al sitio y a reservas. Probado en local y en
+GitHub Pages, sin 404 en Network (confirmar antes de entregar).
