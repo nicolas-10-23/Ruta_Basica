@@ -661,7 +661,34 @@ sobre #006466 ~7:1; #272640 sobre Amarillo Farol ~10:1; Crema 75 %
 sobre #212F45 ~8:1. Petróleo sobre #272640 no cumple (~2:1), por eso en
 oscuro el botón es Amarillo Farol.
 
-28. INTEGRACIÓN DEL ECOSISTEMA
+28. CONTRARRELOJ 1: INSCRIPCIÓN A RUEDA NOCTURNA
+
+
+Qué se hizo: sección #inscripcion en la landing con un form (post) y
+tres fieldset con legend: Tus datos, Tu salida y Tu experiencia.
+
+Controles elegidos:
+- Nombre: text (minlength 3). Correo: email. Celular: tel con pattern
+  3[0-9]{9} y title.
+- Ruta y día de salida: select, porque son listas fijas.
+- Acompañantes: number con min 0 y max 3.
+- Nivel de experiencia y bicicleta propia: radio, por ser pocas
+  opciones de elección única; cada grupo en su fieldset.
+- Condiciones: checkbox obligatorio.
+Todos los campos tienen label asociada (for/id) y required.
+
+Estilo: campos del kit, dos columnas desde md (md:grid-cols-2) y variante
+dark: en fondos, bordes, texto y foco.
+
+Pruebas: vacío no se envía; nombre de 2 letras,
+celular 1234567890 o 300123 y 4 acompañantes se rechazan; completo se
+acepta. Recorrido solo con teclado sin saltos ilógicos. Vista correcta a
+360 px y 1280 px, en modo claro y oscuro.
+
+Pendiente: el envío real requiere un servidor (action="#"); en GitHub
+Pages mostrará 405.
+
+29. INTEGRACIÓN DEL ECOSISTEMA
 
 Cambios:
 - Sitio principal: enlace "Rueda Nocturna" en el menú de las tres
@@ -694,3 +721,4 @@ campaña usa además la paleta de Coolors como fondos y superficies.
 Verificación: desde cada página del sitio se llega a la landing con un
 clic, y desde la landing al sitio y a reservas. Probado en local y en
 GitHub Pages, sin 404 en Network (confirmar antes de entregar).
+

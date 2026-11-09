@@ -126,14 +126,118 @@
         </section>
 
         <section id="inscripcion" class="py-12 md:py-16">
-            <div class="mx-auto max-w-6xl px-6">
-                <div class="flex flex-col items-start gap-6 rounded-lg border-l-4 border-verde-ruta bg-petroleo/10 p-6 dark:border-amarillo-farol dark:bg-amarillo-farol/10 md:flex-row md:items-center md:justify-between">
-                    <div class="space-y-2">
-                        <h2 class="font-titulos text-xl font-bold md:text-2xl">¿Listo para rodar de noche?</h2>
-                        <p>Salidas de jueves a sábado. Cupos limitados.</p>
-                    </div>
-                    <a href="../paginas/reservas.html" class="rounded-lg bg-petroleo px-6 py-3 font-semibold text-white shadow-md hover:brightness-90 focus:outline-none focus:ring-4 focus:ring-noche focus:ring-offset-2 focus:ring-offset-crema dark:bg-amarillo-farol dark:text-medianoche dark:focus:ring-crema dark:focus:ring-offset-medianoche">Reserva tu bici</a>
+            <div class="mx-auto max-w-6xl space-y-8 px-6">
+                <div class="space-y-2">
+                    <h2 class="font-titulos text-2xl font-bold md:text-3xl">Inscríbete a Rueda Nocturna</h2>
+                    <p class="text-marino dark:text-crema/75">Todos los campos son obligatorios.</p>
                 </div>
+
+                <form action="#" method="post" class="space-y-6">
+
+                    <fieldset class="space-y-4 rounded-lg border border-noche/15 bg-white p-6 dark:border-white/10 dark:bg-noche">
+                        <legend class="px-2 font-titulos text-lg font-bold">Tus datos</legend>
+
+                        <div class="space-y-2">
+                            <label for="nombre" class="block text-sm font-semibold">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="60" autocomplete="name"
+                                class="w-full rounded-lg border border-marino bg-white px-4 py-3 text-noche focus:border-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:border-crema/50 dark:bg-medianoche dark:text-crema dark:focus:border-amarillo-farol dark:focus:ring-amarillo-farol">
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <div class="space-y-2">
+                                <label for="correo" class="block text-sm font-semibold">Correo electrónico</label>
+                                <input type="email" id="correo" name="correo" required maxlength="100" autocomplete="email" placeholder="nombre@correo.com"
+                                    class="w-full rounded-lg border border-marino bg-white px-4 py-3 text-noche placeholder:text-marino focus:border-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:border-crema/50 dark:bg-medianoche dark:text-crema dark:placeholder:text-crema/70 dark:focus:border-amarillo-farol dark:focus:ring-amarillo-farol">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="celular" class="block text-sm font-semibold">Celular</label>
+                                <input type="tel" id="celular" name="celular" required inputmode="numeric" maxlength="10" pattern="3[0-9]{9}"
+                                    title="10 dígitos que empiecen por 3, sin espacios ni +57" autocomplete="tel" placeholder="3001234567"
+                                    class="w-full rounded-lg border border-marino bg-white px-4 py-3 text-noche placeholder:text-marino focus:border-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:border-crema/50 dark:bg-medianoche dark:text-crema dark:placeholder:text-crema/70 dark:focus:border-amarillo-farol dark:focus:ring-amarillo-farol">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="space-y-4 rounded-lg border border-noche/15 bg-white p-6 dark:border-white/10 dark:bg-noche">
+                        <legend class="px-2 font-titulos text-lg font-bold">Tu salida</legend>
+
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <div class="space-y-2">
+                                <label for="ruta" class="block text-sm font-semibold">Ruta</label>
+                                <select id="ruta" name="ruta" required
+                                        class="w-full rounded-lg border border-marino bg-white px-4 py-3 text-noche focus:border-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:border-crema/50 dark:bg-medianoche dark:text-crema dark:focus:border-amarillo-farol dark:focus:ring-amarillo-farol">
+                                    <option value="">Selecciona una ruta</option>
+                                    <option value="luces-del-centro">Luces del Centro</option>
+                                    <option value="miradores-de-la-ciudad">Miradores de la Ciudad</option>
+                                    <option value="luna-en-las-palmas">Luna en Las Palmas</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="dia" class="block text-sm font-semibold">Día de salida</label>
+                                <select id="dia" name="dia" required
+                                        class="w-full rounded-lg border border-marino bg-white px-4 py-3 text-noche focus:border-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:border-crema/50 dark:bg-medianoche dark:text-crema dark:focus:border-amarillo-farol dark:focus:ring-amarillo-farol">
+                                    <option value="">Selecciona un día</option>
+                                    <option value="jueves">Jueves</option>
+                                    <option value="viernes">Viernes</option>
+                                    <option value="sabado">Sábado</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="acompanantes" class="block text-sm font-semibold">Número de acompañantes (0 a 3)</label>
+                                <input type="number" id="acompanantes" name="acompanantes" required min="0" max="3" step="1" value="0"
+                                    class="w-full rounded-lg border border-marino bg-white px-4 py-3 text-noche focus:border-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:border-crema/50 dark:bg-medianoche dark:text-crema dark:focus:border-amarillo-farol dark:focus:ring-amarillo-farol">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="space-y-4 rounded-lg border border-noche/15 bg-white p-6 dark:border-white/10 dark:bg-noche">
+                        <legend class="px-2 font-titulos text-lg font-bold">Tu experiencia</legend>
+
+                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                            <fieldset class="space-y-2">
+                                <legend class="text-sm font-semibold">Nivel de experiencia</legend>
+                                <div class="flex flex-wrap gap-4">
+                                    <label for="nivel-principiante" class="flex items-center gap-2">
+                                        <input type="radio" id="nivel-principiante" name="nivel" value="principiante" required class="h-5 w-5 accent-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:accent-amarillo-farol dark:focus:ring-amarillo-farol">
+                                        Principiante
+                                    </label>
+                                    <label for="nivel-intermedio" class="flex items-center gap-2">
+                                        <input type="radio" id="nivel-intermedio" name="nivel" value="intermedio" class="h-5 w-5 accent-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:accent-amarillo-farol dark:focus:ring-amarillo-farol">
+                                        Intermedio
+                                    </label>
+                                    <label for="nivel-avanzado" class="flex items-center gap-2">
+                                        <input type="radio" id="nivel-avanzado" name="nivel" value="avanzado" class="h-5 w-5 accent-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:accent-amarillo-farol dark:focus:ring-amarillo-farol">
+                                        Avanzado
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="space-y-2">
+                                <legend class="text-sm font-semibold">¿Tienes bicicleta propia?</legend>
+                                <div class="flex flex-wrap gap-4">
+                                    <label for="bici-si" class="flex items-center gap-2">
+                                        <input type="radio" id="bici-si" name="bicicleta-propia" value="si" required class="h-5 w-5 accent-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:accent-amarillo-farol dark:focus:ring-amarillo-farol">
+                                        Sí
+                                    </label>
+                                    <label for="bici-no" class="flex items-center gap-2">
+                                        <input type="radio" id="bici-no" name="bicicleta-propia" value="no" class="h-5 w-5 accent-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:accent-amarillo-farol dark:focus:ring-amarillo-farol">
+                                        No
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </fieldset>
+
+                    <div class="space-y-4">
+                        <label for="condiciones" class="flex items-start gap-3">
+                            <input type="checkbox" id="condiciones" name="condiciones" required class="mt-1 h-5 w-5 accent-petroleo focus:outline-none focus:ring-4 focus:ring-petroleo dark:accent-amarillo-farol dark:focus:ring-amarillo-farol">
+                            <span>Acepto las condiciones de la salida.</span>
+                        </label>
+
+                        <button type="submit" class="rounded-lg bg-petroleo px-6 py-3 font-semibold text-white shadow-md hover:brightness-90 focus:outline-none focus:ring-4 focus:ring-noche focus:ring-offset-2 focus:ring-offset-crema dark:bg-amarillo-farol dark:text-medianoche dark:focus:ring-crema dark:focus:ring-offset-medianoche">Enviar inscripción</button>
+                    </div>
+
+                </form>
             </div>
         </section>
 
