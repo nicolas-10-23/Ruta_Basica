@@ -740,3 +740,32 @@ tienen el mismo width y padding de 24 px.
 Contraste: texto oscuro sobre Amarillo Farol ~10:1; blanco sobre
 petroleo ~7:1; Amarillo Farol sobre #212F45 ~10:1 (verificar en WebAIM).
 Modo oscuro revisado con prefers-color-scheme: dark.
+
+31. LANZAMIENTO Y DEMO
+
+Lista de verificación final: ejecutada en el sitio y en la landing
+(semántica, accesibilidad, formularios, responsive 360/768/1280,
+modo claro/oscuro, cero 404, sin estilos en línea, output.css
+minificado).
+
+Validador W3C: nocturna/index.html y paginas/reservas.html revisados.
+Errores encontrados y corregidos: ninguno.
+
+README.md: descripción, enlaces, páginas, tecnologías, recomendación de
+framework, capturas, aprendizajes y autor.
+
+Publicación: commit de lanzamiento y verificación en GitHub Pages:
+Sitio Rueda Libre:  (https://nicolas-10-23.github.io/Ruta_Basica/rueda-libre/)
+Landing Rueda; (https://nicolas-10-23.github.io/Ruta_Basica/rueda-libre/nocturna/index.html)
+Repositorio: (https://github.com/nicolas-10-23/Ruta_Basica)
+sin 404.
+
+Demo: real 3 min 10 s.
+
+Retroalimentación del compañero:
+- Le gustó: el diseño visual y la navegación entre las secciones.
+- Mejoraría: explicar mejor algunas funciones y mostrar más detalles del resultado final.
+
+Ajuste después del ensayo: simplifiqué las explicaciones y mejoré el orden de la demostración para aprovechar el tiempo.
+
+Pendiente: seguir mejorando los detalles visuales y completar las funcionalidades que faltan.

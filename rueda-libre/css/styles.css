@@ -33,6 +33,10 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
     font-family: var(--fuente-texto);
     color: var(--color-azul-noche);
     background-color: var(--color-crema);
@@ -85,6 +89,7 @@ footer {
 }
 
 main {
+    flex: 1;
     padding: var(--espacio-2);
 }
 
@@ -121,7 +126,21 @@ footer {
     display: flex;
     flex-direction: column;
     gap: var(--espacio-3);
-    color: var(--color-gris-asfalto);
+    position: relative;
+    z-index: 11;
+    isolation: isolate;
+    color: var(--color-crema);
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-block: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background-color: var(--color-verde-ruta);
 }
 
 footer p,
