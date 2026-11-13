@@ -722,3 +722,21 @@ Verificación: desde cada página del sitio se llega a la landing con un
 clic, y desde la landing al sitio y a reservas. Probado en local y en
 GitHub Pages, sin 404 en Network (confirmar antes de entregar).
 
+30. PLANES RUEDA NOCTURNA
+
+Qué se hizo: sección #planes en la landing con tres cards (Individual,
+Pareja y Grupo).
+- Grid: grid-cols-1 en celular y lg:grid-cols-3; las celdas se estiran,
+  así las cards tienen la misma altura.
+- Cada card: flex flex-col justify-between, así el botón queda al final.
+  Beneficios en ul con flex flex-col gap-2.
+- Pareja destacada: border-2 de color, fondo petroleo/10 (amarillo
+  farol/10 en oscuro) y etiqueta "Más elegido" con position absolute,
+  por lo que no mueve las demás cards. Se distingue por color y texto.
+- Box model coherente: las tres con p-6, border-2 y rounded-lg.
+
+Medidas en DevTools: las tres cards
+tienen el mismo width y padding de 24 px.
+Contraste: texto oscuro sobre Amarillo Farol ~10:1; blanco sobre
+petroleo ~7:1; Amarillo Farol sobre #212F45 ~10:1 (verificar en WebAIM).
+Modo oscuro revisado con prefers-color-scheme: dark.
